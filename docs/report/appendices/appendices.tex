@@ -1,0 +1,22 @@
+%!TEX program = xelatex
+\documentclass[final]{report} %scrreprt of scrartcl
+\input{../../.library/preamble.tex}
+\input{../../.library/style.tex}
+\addbibresource{../../.library/bibliography.bib}
+\begin{document}
+\begin{appendices}
+\renewcommand{\chapternumber}{\appendixname\space\thechapter}
+\crefalias{chapter}{app}
+% \addtocontents{toc}{\protect\setcounter{tocdepth}{2}}
+% \makeatletter
+% \addtocontents{toc}{%
+% 	\begingroup
+% 	\let\protect\l@chapter\protect\l@section
+% 	\let\protect\l@section\protect\l@subsection
+% }
+% \makeatother
+
+\chapter{First Appendix}\label{app:first-appendix}
+
+\end{appendices}
+\end{document}

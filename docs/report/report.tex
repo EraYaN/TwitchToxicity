@@ -1,0 +1,33 @@
+%!TEX program=xelatex
+%!TEX spellcheck = en_GB
+\documentclass[final]{report}
+\input{../.library/preamble.tex}
+\input{../.library/style.tex}
+\addbibresource{../.library/bibliography.bib}
+
+\title{Measuring toxicity in twitch streamer communities}
+%\author{Someone} %hardcoded
+\newcommand{\thesubtitle}{\hfill}
+\author{~}
+\date{\today}
+
+\begin{document}
+\pagenumbering{roman}
+
+%----intro
+\subimport{../.library/}{title.tex}
+\newpage
+\pdfbookmark{\contentsname}{Contents}\label{ch:contents}
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+\subimport{introduction/}{introduction.tex}
+\subimport{analysis/}{analysis.tex}
+\subimport{discussion/}{discussion.tex}
+\subimport{conclusion/}{conclusion.tex}
+\newpage
+\pagenumbering{Roman}
+
+\printbibliography
+\subimport{appendices/}{appendices.tex}
+\end{document}
