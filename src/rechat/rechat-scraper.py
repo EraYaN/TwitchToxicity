@@ -8,12 +8,7 @@ import math
 import json
 
 
-def scrape_vods(vod_ids=[]):
-    for id in vod_ids:
-        scrape_vod(id)
-
-
-def scrape_vod(vod_id):
+def scrape_vod(vod_id, filename):
     CHUNK_ATTEMPTS = 6
     CHUNK_ATTEMPT_SLEEP = 10
 
@@ -75,10 +70,13 @@ def scrape_vod(vod_id):
     print()
     print("saving to " + file_name)
 
+    # TODO: use json-info
+
     f = open("rechats/" + file_name, "w")
     f.write(json.dumps(messages))
     f.close()
 
     print("done!")
 
-scrape_vods(["148361448"])
+
+scrape_vod("148361448")
