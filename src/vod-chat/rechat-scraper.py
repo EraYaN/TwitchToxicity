@@ -76,7 +76,7 @@ def scrape_vod(vod_id):
     print()
     print("saving to " + file_name)
 
-    f = open(file_name, "w")
+    f = open("chats/" + file_name, "w")
     f.write(json.dumps(messages))
     f.close()
 
