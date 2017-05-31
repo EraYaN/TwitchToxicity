@@ -1,13 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.1
+VisualStudioVersion = 15.0.26401.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "SpeechRecognitionTest", "SpeechRecognitionTest\SpeechRecognitionTest.pyproj", "{4D12B9F5-33A4-4BAF-A566-28FDFC7987C5}"
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "NLTKTest", "NLTKTest\NLTKTest.pyproj", "{2E586CB0-A42A-4365-95AD-567AE45BB356}"
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "TwitchVODDownloader", "TwitchVODDownloader\TwitchVODDownloader.pyproj", "{BFDC41B9-AB35-4DD9-85C2-CBEF6083BFB5}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "TwitchVideoIDCollector", "TwitchVideoIDCollector\TwitchVideoIDCollector.pyproj", "{C747DA9E-3784-40D8-9FA4-D0A5732A6B9C}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "TwitchVideoDownloader", "TwitchVideoDownloader\TwitchVideoDownloader.pyproj", "{83B8E4EC-6C5A-49D9-903B-FFAA67C7B810}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,10 @@ Global
 		{2E586CB0-A42A-4365-95AD-567AE45BB356}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BFDC41B9-AB35-4DD9-85C2-CBEF6083BFB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BFDC41B9-AB35-4DD9-85C2-CBEF6083BFB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C747DA9E-3784-40D8-9FA4-D0A5732A6B9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C747DA9E-3784-40D8-9FA4-D0A5732A6B9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83B8E4EC-6C5A-49D9-903B-FFAA67C7B810}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83B8E4EC-6C5A-49D9-903B-FFAA67C7B810}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

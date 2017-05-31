@@ -7,10 +7,13 @@
     <StartupFile>TwitchVODDownloader.py</StartupFile>
     <SearchPath>
     </SearchPath>
-    <WorkingDirectory>.</WorkingDirectory>
+    <WorkingDirectory>$(UserProfile)\OneDrive\Universiteit\Measuring the Internet\TwitchToxicity\</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>TwitchVODDownloader</Name>
     <RootNamespace>TwitchVODDownloader</RootNamespace>
+    <IsWindowsApplication>False</IsWindowsApplication>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
