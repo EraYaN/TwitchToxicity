@@ -27,7 +27,6 @@ def json2json(json):
 
 
 def file2json(file_name):
-    data = None
     with open(file_name) as data_file:
         data = json.load(data_file)
     json2json(data)

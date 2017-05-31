@@ -48,8 +48,7 @@ def scrape_vod(vod_id):
             error = None
             try:
                 chat_json = requests.get(
-                    "http://rechat.twitch.tv/rechat-messages?start=" + str(chat_timestamp) + "&video_id=v" + sys.argv[
-                        1],
+                    "http://rechat.twitch.tv/rechat-messages?start=" + str(chat_timestamp) + "&video_id=v" + vod_id,
                     headers={"Client-ID": cid}).json()
             except requests.exceptions.ConnectionError as e:
                 error = str(e)
@@ -76,8 +75,10 @@ def scrape_vod(vod_id):
     print()
     print("saving to " + file_name)
 
-    f = open("chats/" + file_name, "w")
+    f = open("rechats/" + file_name, "w")
     f.write(json.dumps(messages))
     f.close()
 
     print("done!")
+
+scrape_vods(["148361448"])
