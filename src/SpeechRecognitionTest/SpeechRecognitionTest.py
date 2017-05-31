@@ -36,7 +36,7 @@ try:
     if isinstance(apiresult,list): 
         raise sr.UnknownValueError
 
-    print("[Google Speech] Best hypothesis: \"" + apiresult['alternative'][0]['transcript'] + "\" confidence: " + apiresult['alternative'][0]['confidence'])
+    print("[Google Speech] Best hypothesis: \"", apiresult['alternative'][0]['transcript'], "\" confidence: ", apiresult['alternative'][0]['confidence'])
 except sr.UnknownValueError:
     print("Google Speech Recognition could not understand audio")
 except sr.RequestError as e:
