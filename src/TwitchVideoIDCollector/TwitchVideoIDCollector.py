@@ -22,12 +22,14 @@ class VideoParser:
             'stonedyooda', 'cheatbanned', 'towelliee', 'twitch', 'e3', 'starladder5', 'dendi', 'sp4zie', 'streamerhouse',
             'drdisrespectlive', 'esl_lol', 'esltv_lol', 'Aiekillu'
         ]
+        self.videolist = []
 
     def get_user_data(self, client, user):
         channel = client.channels.get_by_id(user.id)
         lastpage = False
         offset = 0
         count = 0
+        duplicates = 0
         discarded = 0
         while not lastpage:
             print("\rAdded {} videos of {}. Grabbing videos page {:d} for {}...".format(count,count+discarded,int(offset/PAGE_SIZE)+1,user['name']),end='')
@@ -38,6 +40,13 @@ class VideoParser:
             for v in [OrderedDict(v) for v in videos]:
                 v['channel'] = OrderedDict(v['channel'])
                 if v['published_at'] > chat_replay_implemented:
+                    if v['id'] not in self.videolist:
+                        v['duplicate'] = False
+                        self.videolist.append(v['id'])                        
+                    else:
+                        v['duplicate'] = True
+                        duplicates += 1
+
                     videodicts.append(v)
                     count += 1
                 else:
@@ -45,7 +54,7 @@ class VideoParser:
                     #print('Discarded video {} from {} from {} because it is too old.'.format(v['id'],user['name'],v['recorded_at']))
 
             offset += PAGE_SIZE
-        print("\rFor user {} added {} videos of {} in {} pages.                                       ".format(user['name'],count,count+discarded,int(offset/PAGE_SIZE)))
+        print("\rFor user {} added {} videos of {} in {} pages. {} were duplicates.          ".format(user['name'],count,count+discarded,int(offset/PAGE_SIZE),duplicates))
         return {
             'user'    : OrderedDict(user),
             'videos': videodicts

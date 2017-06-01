@@ -7,11 +7,15 @@
     <StartupFile>TwitchVideoDownloader.py</StartupFile>
     <SearchPath>
     </SearchPath>
-    <WorkingDirectory>$(UserProfile)\OneDrive\Universiteit\Measuring the Internet\TwitchToxicity\</WorkingDirectory>
+    <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>TwitchVideoDownloader</Name>
     <RootNamespace>TwitchVideoDownloader</RootNamespace>
     <IsWindowsApplication>False</IsWindowsApplication>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <CommandLineArguments>--root "\\STORAGE\erwin\toxicity" --threads 1</CommandLineArguments>
+    <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
+    <PublishUrl>\\STORAGE\erwin\toxicity</PublishUrl>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>

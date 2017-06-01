@@ -4,18 +4,24 @@ import calendar
 import time
 import math
 import pickle
+import os
+import logging
+
 try:
     import ujson as json
 except:
     import json
 
-def download_rechat(cid, vod_info, filename):
+def download_rechat(cid, vod_info, filename, force=False):
+    logger = logging.getLogger(vod_info['id'])   
     CHUNK_ATTEMPTS = 6
     CHUNK_ATTEMPT_SLEEP = 10
-
+    if os.path.exists(filename) and not force:
+        logger.info("Rechat already downloaded to {}".format(filename))
+        return True
     messages = []
 
-    print("\nSaving to {}".format(filename))
+    logger.info("Saving to {}".format(filename))
 
     start_timestamp = calendar.timegm(time.strptime(vod_info["recorded_at"], "%Y-%m-%dT%H:%M:%SZ"))
     video_len = int(vod_info["length"])
@@ -25,7 +31,10 @@ def download_rechat(cid, vod_info, filename):
         chunk_number = int((chat_timestamp - start_timestamp) / 30) + 1
         chunks = int((last_timestamp - start_timestamp) / 30) + 1
 
-        print("\rDownloading chunk {} of {}".format(chunk_number,chunks), end="")
+        if chunk_number % 10 == 0:
+            logger.info("Downloading chunk {} of {}".format(chunk_number,chunks))
+        else:
+            logger.debug("Downloading chunk {} of {}".format(chunk_number,chunks))
 
         chat_json = None
 
@@ -44,34 +53,35 @@ def download_rechat(cid, vod_info, filename):
                     for error_obj in chat_json['errors']:
                         if error_obj['status'] == 404:
                             exit = True
-                        error += "ERROR[{status}] {detail}.\n".format(**error_obj)
+                        error += "ERROR[{status}] {detail}. ".format(**error_obj)
 
-            if error == None:
+            if error is None:
                 messages += chat_json["data"]
                 break
             else:
-                print("\nERROR while downloading chunk #{}: {}".format(chunk_number,error))
+                logger.error("ERROR while downloading chunk #{}: {}".format(chunk_number,error))
 
                 if exit:
                     return False
 
                 if i < CHUNK_ATTEMPTS - 1:
-                    print("Retrying in {} seconds.".format(CHUNK_ATTEMPT_SLEEP), end="")
-                print("(Attempt {}/{})".format(i + 1,CHUNK_ATTEMPTS))
+                    logger.info("Retrying in {} seconds.".format(CHUNK_ATTEMPT_SLEEP))
+                logger.info("(Attempt {}/{})".format(i + 1,CHUNK_ATTEMPTS))
 
                 if i < CHUNK_ATTEMPTS - 1:
                     time.sleep(CHUNK_ATTEMPT_SLEEP)
 
-        if error != None:
-            sys.exit("Max retries exceeded.")
+        if error is not None:
+            logger.error("Max retries exceeded.")
+            return False
 
-    print("\nSaving...")
+    logger.debug("Saving...")
 
 
     with open(filename, "wb") as f:
         pickle.dump(messages,f)
 
-    print("Saved Rechat!")
+    logger.info("Saved Rechat!")
     return True
 
 
