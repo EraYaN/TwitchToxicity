@@ -158,7 +158,7 @@ if __name__ == '__main__':
         queue.put_nowait(None)
         listener.join()
 
-        with open(os.path.realpath(os.path.join(opts.root,opts.result_file),'w')) as f:
+        with open(os.path.realpath(os.path.join(opts.root,opts.result_file)),'w') as f:
             for res in global_results:
                 f.write("\"Result for\";{};{};{}\n".format(res[0],res[1],res[2]))
 
