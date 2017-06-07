@@ -1,5 +1,6 @@
 import pickle
 import os
+import unicodedata as ud
 import re
 
 common_words = None
@@ -7,23 +8,33 @@ common_words = None
 with open("TwitchEmotes.txt", "r") as Emotes:
     common_words = [line[:-1] for line in Emotes]
 
-with open("data/videos/Doublelift/D-v102365143.rechat.pickle", "rb") as file:
-    data = pickle.load(file)
-
-    data2 = []
-
-    for line in data:
-        #print(line)
-        message = line["attributes"]["message"]
-        print(message)
-
-        big_regex = re.compile(r'\b{}\b'.format(r'\b|\b'.join(map(re.escape, common_words))))
-        message = big_regex.sub("", message)
-        print(message)
-
-        # title = "When to use Python for web applications"
-       # words = set(message.lower().split())
-     #   keywords = words.difference(common_words)
-      #  print(keywords)
+big_regex = re.compile(r'\b{}\b'.format(r'\b|\b'.join(map(re.escape, common_words))))
 
 
+def strip_unicode(s, replace=r''):
+    return re.sub(r'[^\x00-\x7f]', replace, ud.normalize('NFD', s))
+
+
+def filter(filename):
+    with open(filename, "rb") as file:
+        data = pickle.load(file)
+        filtered_message = []
+        for line in data:
+            message = line["attributes"]["message"]
+            message = big_regex.sub("", message)
+            message = strip_unicode(message).strip()
+            line["attributes"]["message-filtered"] = message
+            if message:
+                filtered_message.append(line)
+        return filtered_message
+
+
+data_folder = "D:\\twitchtoxicity\\data"
+for root, dirs, files in os.walk(data_folder, topdown=False):
+    for name in files:
+        if name.endswith("rechat.pickle"):
+            print("Processing %s " % name)
+            filtered = filter(os.path.join(root, name))
+            new_filename = name.replace("rechat.pickle", "rechat-filtered.pickle")
+            with open(os.path.join(root, new_filename), 'wb') as filtered_file:
+                pickle.dump(filtered, filtered_file)
