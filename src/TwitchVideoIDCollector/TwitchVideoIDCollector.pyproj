@@ -2,15 +2,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>2e586cb0-a42a-4365-95ad-567ae45bb356</ProjectGuid>
+    <ProjectGuid>c747da9e-3784-40d8-9fa4-d0a5732a6b9c</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>NLTKTest.py</StartupFile>
+    <StartupFile>TwitchVideoIDCollector.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>$(UserProfile)\OneDrive\Universiteit\Measuring the Internet\TwitchToxicity\</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>NLTKTest</Name>
-    <RootNamespace>NLTKTest</RootNamespace>
+    <Name>TwitchVideoIDCollector</Name>
+    <RootNamespace>TwitchVideoIDCollector</RootNamespace>
     <IsWindowsApplication>False</IsWindowsApplication>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -22,7 +22,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="NLTKTest.py" />
+    <Compile Include="TwitchVideoIDCollector.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

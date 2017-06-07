@@ -2,16 +2,20 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>2e586cb0-a42a-4365-95ad-567ae45bb356</ProjectGuid>
+    <ProjectGuid>83b8e4ec-6c5a-49d9-903b-ffaa67c7b810</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>NLTKTest.py</StartupFile>
+    <StartupFile>TwitchVideoDownloader.py</StartupFile>
     <SearchPath>
     </SearchPath>
-    <WorkingDirectory>$(UserProfile)\OneDrive\Universiteit\Measuring the Internet\TwitchToxicity\</WorkingDirectory>
+    <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>NLTKTest</Name>
-    <RootNamespace>NLTKTest</RootNamespace>
+    <Name>TwitchVideoDownloader</Name>
+    <RootNamespace>TwitchVideoDownloader</RootNamespace>
     <IsWindowsApplication>False</IsWindowsApplication>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <CommandLineArguments>--root "\\STORAGE\erwin\toxicity" --threads 1</CommandLineArguments>
+    <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
+    <PublishUrl>\\STORAGE\erwin\toxicity</PublishUrl>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,7 +26,19 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="NLTKTest.py" />
+    <Compile Include="TwitchTools\RechatScraper.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TwitchTools\YouTubeDLWrapper.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TwitchTools\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TwitchVideoDownloader.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="TwitchTools\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
