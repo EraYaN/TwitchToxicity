@@ -15,7 +15,7 @@ def strip_unicode(s, replace=r''):
     return re.sub(r'[^\x00-\x7f]', replace, ud.normalize('NFD', s))
 
 
-def filter(filename):
+def filter_rechat(filename):
     with open(filename, "rb") as file:
         data = pickle.load(file)
         filtered_message = []
@@ -34,7 +34,7 @@ for root, dirs, files in os.walk(data_folder, topdown=False):
     for name in files:
         if name.endswith("rechat.pickle"):
             print("Processing %s " % name)
-            filtered = filter(os.path.join(root, name))
+            filtered = filter_rechat(os.path.join(root, name))
             new_filename = name.replace("rechat.pickle", "rechat-filtered.pickle")
             with open(os.path.join(root, new_filename), 'wb') as filtered_file:
                 pickle.dump(filtered, filtered_file)
