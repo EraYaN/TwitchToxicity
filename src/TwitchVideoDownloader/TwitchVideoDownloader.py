@@ -8,7 +8,8 @@ except:
 import TwitchTools.YouTubeDLWrapper as yt
 import TwitchTools.RechatScraper as rs
 from datetime import datetime
-
+import lzma as compressor
+COMPRESSOR_EXTENSION = 'xz'
 import logging
 import logging.handlers
 import multiprocessing as mp
@@ -54,7 +55,7 @@ def worker_configurer(queue):
     root.addHandler(h)
     root.setLevel(logging.INFO) # send all messages, for demo; no other level or filter logic applied.
 
-def ProcessVideo(queue, configurer, video_info, root): 
+def ProcessVideo(queue, configurer, video_info, root, skip_video): 
     signal.signal(signal.SIGINT, signal.SIG_IGN)
     configurer(queue)
     
@@ -69,18 +70,18 @@ def ProcessVideo(queue, configurer, video_info, root):
     download_result = (ydlw.lastresult['status'] == 'finished')
 
     base = os.path.splitext(ydlw.lastresult['filename'])[0]
-    api_info_file = base + '.apiinfo.pickle'
+    api_info_file = base + '.apiinfo.pickle.{0}'.format(COMPRESSOR_EXTENSION)
     threadlogger.info("Saving Twitch API video info....")
-    with open(api_info_file,'wb') as f:
+    with compressor.open(api_info_file,'wb') as f:
         info = pickle.dump(video_info,f)
 
     info_file = base + '.info.json'
 
-    threadlogger.info("Reading YouTube-DL info....")
-    with open(info_file,'r') as f:
-        info = json.load(f)    
+    #threadlogger.info("Reading YouTube-DL info....")
+    #with open(info_file,'r') as f:
+    #    info = json.load(f)    
     threadlogger.info("Downloading chat....")
-    rechat_result = rs.download_rechat(CID, video_info, base + '.rechat.pickle')
+    rechat_result = rs.download_rechat(CID, video_info, base + '.rechat.pickle.{0}'.format(COMPRESSOR_EXTENSION))
 
     return (video_info['id'],download_result, rechat_result)
 
@@ -99,6 +100,7 @@ if __name__ == '__main__':
     parser.add_argument('--root', action="store", help='The output root folder. Default is current directory.',default=os.getcwd())
     parser.add_argument('--result-file', action="store", help='The results file. Relative to root.',default='data/results.txt')
     parser.add_argument('--threads', action="store", type=int, help='The size of the thread pool.',default='8')
+    parser.add_argument('--skip-stream', action="store", help='Skip stream download.')
 
     pool = None
     listener = None
@@ -148,7 +150,7 @@ if __name__ == '__main__':
                     skipped += 1
                     continue
                 added += 1
-                pool.apply_async(ProcessVideo, args = (queue, worker_configurer, v, opts.root), callback = log_result, error_callback = log_error)
+                pool.apply_async(ProcessVideo, args = (queue, worker_configurer, v, opts.root, opts.skip_stream), callback = log_result, error_callback = log_error)
                 logger.debug('Found video {} from {} with length {} from {}.'.format(v['id'],user,v['length'],v['recorded_at'] ))
         logger.info('Added {} videos to queue and skipped {} videos.'.format(added,skipped))
         pool.close()

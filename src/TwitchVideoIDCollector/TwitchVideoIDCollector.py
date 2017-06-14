@@ -2,6 +2,8 @@ from twitch import TwitchClient
 import pickle
 from datetime import datetime
 from collections import OrderedDict
+import lzma as compressor
+COMPRESSOR_EXTENSION = 'xz'
 
 chat_replay_implemented = datetime(2016, 2, 23) # Date from (https://blog.twitch.tv/update-chat-replay-is-now-live-the-official-twitch-blog-aac0b82305b6)
 PAGE_SIZE = 100
@@ -74,10 +76,10 @@ class VideoParser:
             count += 1
 
         print("Writng all results to {}...".format(filename))
-        with open(filename, "wb") as f:
+        with compressor.open(filename, "wb") as f:
             pickle.dump(data, f)
 
 ###########################################
 if __name__ == '__main__':
 	parser = VideoParser()
-	parser.run("data\\video-ids\\top100-videos-per-user.pickle")
+	parser.run('data\\video-ids\\top100-videos-per-user.pickle.{0}'.format(COMPRESSOR_EXTENSION))

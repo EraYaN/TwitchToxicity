@@ -15,6 +15,8 @@ Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "TwitchVideoDownloader", "Tw
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "UserChatExplorer", "UserChatExplorer\UserChatExplorer.pyproj", "{5582BDB1-09D7-4319-A5F8-C13EAC821F01}"
 EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Preprocessor", "Preprocessor\Preprocessor.pyproj", "{270829C1-014C-4305-9840-A53DEC850F8A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,8 @@ Global
 		{83B8E4EC-6C5A-49D9-903B-FFAA67C7B810}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5582BDB1-09D7-4319-A5F8-C13EAC821F01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5582BDB1-09D7-4319-A5F8-C13EAC821F01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{270829C1-014C-4305-9840-A53DEC850F8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{270829C1-014C-4305-9840-A53DEC850F8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
