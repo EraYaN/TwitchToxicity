@@ -6,6 +6,8 @@ import math
 import pickle
 import os
 import logging
+import lzma as compressor
+COMPRESSOR_EXTENSION = 'xz'
 
 try:
     import ujson as json
@@ -78,7 +80,7 @@ def download_rechat(cid, vod_info, filename, force=False):
     logger.debug("Saving...")
 
 
-    with open(filename, "wb") as f:
+    with compressor.open(filename, "wb") as f:
         pickle.dump(messages,f)
 
     logger.info("Saved Rechat!")

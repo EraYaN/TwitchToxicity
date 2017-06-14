@@ -1,5 +1,7 @@
 import pickle
 import os
+import lzma as compressor
+COMPRESSOR_EXTENSION = 'xz'
 from collections import OrderedDict
 import unicodedata as ud
 import re 
@@ -10,9 +12,9 @@ users = {}
 
 for root, dirs, files in os.walk("./data/videos", topdown=False):
     for name in files:
-        if name.endswith('rechat.pickle'):
+        if name.endswith('rechat.pickle.{0}'.format(COMPRESSOR_EXTENSION)):
             print('Processing {}\{}'.format(strip_unicode(root),strip_unicode(name)));
-            with open(os.path.join(root, name),'rb') as file:
+            with compressor.open(os.path.join(root, name),'rb') as file:
                 data = pickle.load(file)
                 for line in data:
                     room = line['attributes']['room']
@@ -33,5 +35,5 @@ print('Sorting...')
 
 users_sorted = OrderedDict(sorted(users_list, key=lambda x: x["count"]))
 print('Saving...')
-with open('user-char-explorer-result.pickle','wb') as f:
+with compressor.open('./data/results/user-char-explorer-result.pickle.{0}'.format(COMPRESSOR_EXTENSION),'wb') as f:
     pickle.dump(users_sorted,f)
