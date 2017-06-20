@@ -1,0 +1,24 @@
+﻿body {
+}
+
+.ajaxloader {
+    width: 100px;
+    margin-top: 6px;
+    margin-bottom: 0px;
+    height: 32px;
+    margin-right: 12px;
+    visibility: collapse;
+    opacity: 0.7;
+    color: black !important;
+}
+
+    .ajaxloader img {
+        height: 32px;
+        width: 32px;
+        margin: -10px 5px -6px 0px;
+        padding: 0px;
+    }
+
+body.ajaxbusy .ajaxloader {
+    visibility: visible;
+}

@@ -15,6 +15,10 @@ Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "UserChatExplorer", "UserCha
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Preprocessor", "Preprocessor\Preprocessor.pyproj", "{270829C1-014C-4305-9840-A53DEC850F8A}"
 EndProject
+Project("{A0786B88-2ADB-4C21-ABE8-AA2D79766269}") = "MessageClassifier", "MessageClassifier\MessageClassifier.phpproj", "{D1E3AC91-7137-4813-BB6A-E02E27C35D98}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Sentiment", "Sentiment\Sentiment.pyproj", "{80AD78E8-433D-41D0-B433-8CC3906A1E91}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,10 @@ Global
 		{5582BDB1-09D7-4319-A5F8-C13EAC821F01}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{270829C1-014C-4305-9840-A53DEC850F8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{270829C1-014C-4305-9840-A53DEC850F8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1E3AC91-7137-4813-BB6A-E02E27C35D98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1E3AC91-7137-4813-BB6A-E02E27C35D98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80AD78E8-433D-41D0-B433-8CC3906A1E91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80AD78E8-433D-41D0-B433-8CC3906A1E91}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

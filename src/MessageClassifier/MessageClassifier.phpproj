@@ -1,0 +1,51 @@
+﻿<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Name>MessageClassifier</Name>
+    <ProjectGuid>d1e3ac91-7137-4813-bb6a-e02e27c35d98</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>
+    </RootNamespace>
+    <ProjectTypeGuids>{A0786B88-2ADB-4C21-ABE8-AA2D79766269}</ProjectTypeGuids>
+    <AssemblyName>MessageClassifier</AssemblyName>
+    <Runtime>PHP</Runtime>
+    <RuntimeVersion>7.1</RuntimeVersion>
+    <SaveServerSettingsInUserFile>false</SaveServerSettingsInUserFile>
+    <EnvName>Custom</EnvName>
+    <PHPDevHostName>localhost</PHPDevHostName>
+    <PHPDevAutoPort>true</PHPDevAutoPort>
+    <CustomServerUrl>http://labs.erayan.com/twitchtoxicity</CustomServerUrl>
+    <CustomXdebugPort>9000</CustomXdebugPort>
+    <PublishEvent>BeforeRun</PublishEvent>
+    <PublishBeforeDebugProfile>EraYaN Labs</PublishBeforeDebugProfile>
+    <DebugMappingMethod>Automatic</DebugMappingMethod>
+    <DBGpProxyEnabled>false</DBGpProxyEnabled>
+    <DBGpProxyPort>9001</DBGpProxyPort>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <IncludeDebugInformation>true</IncludeDebugInformation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <IncludeDebugInformation>false</IncludeDebugInformation>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="ajax.php" />
+    <Compile Include="classifierpage.php" />
+    <Compile Include="common.inc.php" />
+    <Compile Include="index.php" />
+    <Compile Include="passwordhash.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="img\ajax-loader-arrows-black.gif" />
+    <Content Include="js\alerts.js" />
+    <Content Include="css\app.css" />
+    <Content Include="js\app.js" />
+    <Content Include="js\helpers.js" />
+    <Content Include="js\jquery.scrollTo.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="js\" />
+    <Folder Include="css\" />
+    <Folder Include="img\" />
+  </ItemGroup>
+</Project>

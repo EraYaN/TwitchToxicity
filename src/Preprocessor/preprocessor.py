@@ -2,7 +2,8 @@ import pickle
 import os
 import unicodedata as ud
 import re
-import gzip
+import lzma as compressor
+COMPRESSOR_EXTENSION = 'xz'
 
 common_words = None
 
@@ -17,7 +18,7 @@ def strip_unicode(s, replace=r''):
 
 
 def filter_rechat(filename):
-    with open(filename, "rb") as file:
+    with compressor.open(filename, "rb") as file:
         data = pickle.load(file)
         filtered_message = []
         for line in data:
@@ -37,5 +38,5 @@ if __name__ == "__main__":
                 print("Processing %s " % name)
                 filtered = filter_rechat(os.path.join(root, name))
                 new_filename = name.replace("rechat.pickle", "rechat-filtered.pickle")
-                with open(os.path.join(root, new_filename), 'wb') as filtered_file:
+                with compressor.open(os.path.join(root, new_filename), 'wb') as filtered_file:
                     pickle.dump(filtered, filtered_file)
