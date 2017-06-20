@@ -2,18 +2,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>bfdc41b9-ab35-4dd9-85c2-cbef6083bfb5</ProjectGuid>
+    <ProjectGuid>270829c1-014c-4305-9840-a53dec850f8a</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>TwitchVODDownloader.py</StartupFile>
+    <StartupFile>Preprocessor.py</StartupFile>
     <SearchPath>
     </SearchPath>
-    <WorkingDirectory>$(UserProfile)\OneDrive\Universiteit\Measuring the Internet\TwitchToxicity\</WorkingDirectory>
+    <WorkingDirectory>F:\Users\Erwin\OneDrive\Universiteit\Measuring the Internet\TwitchToxicity</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>TwitchVODDownloader</Name>
-    <RootNamespace>TwitchVODDownloader</RootNamespace>
+    <Name>Preprocessor</Name>
+    <RootNamespace>Preprocessor</RootNamespace>
     <IsWindowsApplication>False</IsWindowsApplication>
-    <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -24,7 +22,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="TwitchVODDownloader.py" />
+    <Compile Include="Preprocessor.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

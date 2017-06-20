@@ -1,15 +1,17 @@
 from nltk import NaiveBayesClassifier
-from nltk.corpus import subjectivity
+from nltk.corpus import subjectivity, twitter_samples
 
 from nltk.sentiment import SentimentAnalyzer
 from nltk.sentiment.util import mark_negation, extract_unigram_feats
 
-n_instances = 100
-subj_docs = [(sent, 'subj') for sent in subjectivity.sents(categories='subj')[:n_instances]]
-obj_docs = [(sent, 'obj') for sent in subjectivity.sents(categories='obj')[:n_instances]]
+subj_docs = [(sent, 'subj') for sent in subjectivity.sents(categories='subj')]
+obj_docs = [(sent, 'obj') for sent in subjectivity.sents(categories='obj')]
+
+# print(twitter_samples.fileids())
 
 # Each document is represented by a tuple (sentence, label). The sentence is tokenized, so it is represented by a list of strings:
 print(subj_docs)
+print(obj_docs)
 
 # subj_docs[0]
 # (['smart', 'and', 'alert', ',', 'thirteen', 'conversations', 'about', 'one',
@@ -108,8 +110,9 @@ tricky_sentences = [
 sentences.extend(tricky_sentences)
 sid = SentimentIntensityAnalyzer()
 for sentence in sentences:
-    print(sentence)
+    # print(sentence)
     ss = sid.polarity_scores(sentence)
     for k in sorted(ss):
-        print('{0}: {1}, '.format(k, ss[k]), end='')
-    print()
+        pass
+        # print('{0}: {1}, '.format(k, ss[k]), end='')
+        # print()
