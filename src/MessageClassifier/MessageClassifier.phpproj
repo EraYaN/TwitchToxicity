@@ -40,8 +40,11 @@
     <Content Include="js\alerts.js" />
     <Content Include="css\app.css" />
     <Content Include="js\app.js" />
+    <Content Include="js\handlebars-v4.0.4.js" />
+    <Content Include="js\handlebars.runtime-v4.0.4.js" />
     <Content Include="js\helpers.js" />
-    <Content Include="js\jquery.scrollTo.min.js" />
+    <Content Include="js\jquery.scrollTo.js" />
+    <Content Include="test.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="js\" />

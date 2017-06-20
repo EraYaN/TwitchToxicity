@@ -8,7 +8,7 @@
 	});
 });
 
-function hideAlerts(suffix) {
+function hideAlerts() {
 	$('.alert').hide();
 }
 

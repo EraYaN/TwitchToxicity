@@ -22,3 +22,7 @@
 body.ajaxbusy .ajaxloader {
     visibility: visible;
 }
+
+.message.message-classified {
+    opacity: 0.5;
+}
