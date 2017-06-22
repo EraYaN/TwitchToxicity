@@ -75,7 +75,7 @@ class VideoParser:
             print("Done loading data for user {:03d} of {:03d}: {}\n".format(count, len(users), user.name))
             count += 1
 
-        print("Writng all results to {}...".format(filename))
+        print("Writing all results to {}...".format(filename))
         with compressor.open(filename, "wb") as f:
             pickle.dump(data, f)
 
