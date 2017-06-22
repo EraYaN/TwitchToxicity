@@ -7,7 +7,7 @@
     <StartupFile>pickle2sql.py</StartupFile>
     <SearchPath>
     </SearchPath>
-    <WorkingDirectory>F:\Users\Erwin\OneDrive\Universiteit\Measuring the Internet\TwitchToxicity\</WorkingDirectory>
+    <WorkingDirectory>C:\Users\Erwin\OneDrive\Universiteit\Measuring the Internet\TwitchToxicity\</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>Sentiment</Name>
     <RootNamespace>Sentiment</RootNamespace>

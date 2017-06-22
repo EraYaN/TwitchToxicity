@@ -4,10 +4,10 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>270829c1-014c-4305-9840-a53dec850f8a</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Preprocessor.py</StartupFile>
+    <StartupFile>PreprocessorExport.py</StartupFile>
     <SearchPath>
     </SearchPath>
-    <WorkingDirectory>F:\Users\Erwin\OneDrive\Universiteit\Measuring the Internet\TwitchToxicity</WorkingDirectory>
+    <WorkingDirectory>C:\Users\Erwin\OneDrive\Universiteit\Measuring the Internet\TwitchToxicity\</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>Preprocessor</Name>
     <RootNamespace>Preprocessor</RootNamespace>
@@ -23,6 +23,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Preprocessor.py" />
+    <Compile Include="PreprocessorExport.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
