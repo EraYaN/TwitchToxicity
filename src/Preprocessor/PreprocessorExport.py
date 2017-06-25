@@ -10,7 +10,6 @@ import subprocess
 import os
 import lzma as compressor
 COMPRESSOR_EXTENSION = 'xz'
-from joblib import Parallel, delayed
 import multiprocessing
 
 BIN_PATH = os.path.realpath(os.path.join(os.path.dirname(os.path.realpath(__file__)),'../Preprocessor.NET/bin/x64/Release/Preprocessor.NET.exe'))
@@ -39,6 +38,7 @@ def ProcessFile(filename):
                        }
                 json.dump(messageObject,uncompressed_file)
                 uncompressed_file.write('\n')   
+            del data
     
     with subprocess.Popen([BIN_PATH,os.path.abspath(test_json_out),os.path.abspath(test_json_filtered)],stderr=subprocess.PIPE) as proc:
         pass
@@ -48,6 +48,7 @@ def ProcessFile(filename):
             data = json.load(uncompressed_file)
             num = len(data)
             pickle.dump(data,compressed_file)
+            del data
     os.remove(test_json_out)
     os.remove(test_json_filtered)
     return num
@@ -83,6 +84,8 @@ if __name__ == "__main__":
             for name in files:
                 if name.endswith('rechat.pickle.{0}'.format(COMPRESSOR_EXTENSION)):
                     filenames.append((root, name))
+
+        #filenames = [("./data/videos/MLG","Luminosity Gaming vs Virtus Pro - Quarter Finals - MLG CSGO Major-v58219102.rechat.pickle.xz")]
         print("Listing files done. Got {} files.".format(len(filenames)));
         print("Mapping to pool...");
         p.map(ProcessFileTimingWrapper, filenames)        

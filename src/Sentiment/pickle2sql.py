@@ -19,18 +19,16 @@ def pickle2sql(file):
             result_file.write("INSERT INTO twitchtoxicity.messages (`message_data`) VALUES \n");
 
             for line in test_pickle:
-                
-                if index == len(test_pickle)-1:
-                    sys.stdout.write("Done. Processed {} from {} ({:.1%})                     \r".format(index,len(test_pickle),index/len(test_pickle)))
+                if index == len(test_pickle)-1:                    
                     line = json.dumps(line)
                     line = line.replace("\\", "\\\\").replace("'", "\\'")
                     result_file.write("('")
                     result_file.write(line)
                     result_file.write("');\n")
                     index += 1
+                    sys.stdout.write("Done. Processed {} from {} ({:.1%})                     \r".format(index,len(test_pickle),index/len(test_pickle)))
 
-                elif counter == 100:
-                    sys.stdout.write("Processed {} from {} ({:.1%})                     \r".format(index,len(test_pickle),index/len(test_pickle)))
+                elif counter == 999:
                     line = json.dumps(line)
                     line = line.replace("\\", "\\\\").replace("'", "\\'")
                     result_file.write("('")
@@ -39,6 +37,7 @@ def pickle2sql(file):
                     counter = 0
                     result_file.write("\nINSERT INTO twitchtoxicity.messages (`message_data`) VALUES \n");
                     index += 1
+                    sys.stdout.write("Processed {} from {} ({:.1%})                     \r".format(index,len(test_pickle),index/len(test_pickle)))
                     #sql_line = "INSERT INTO twitchtoxicity.messages ('message_data') VALUES \n"
 
                 else:

@@ -44,7 +44,11 @@ if(!empty($_GET['get_messages'])){
             if($res->num_rows>0){
                 while($dat = $res->fetch_assoc()){
                     $response['data'][$dat['message_id']] = $dat;
-                    $response['data'][$dat['message_id']]['message_data'] = json_decode($response['data'][$dat['message_id']]['message_data']);
+                    $response['data'][$dat['message_id']]['message_data'] = json_decode($response['data'][$dat['message_id']]['message_data'],true);
+                    $hours = floor($response['data'][$dat['message_id']]['message_data']['video-offset']/1000 / 3600);
+                    $mins = floor($response['data'][$dat['message_id']]['message_data']['video-offset']/1000 / 60 % 60);
+                    $secs = floor($response['data'][$dat['message_id']]['message_data']['video-offset']/1000 % 60);
+                    $response['data'][$dat['message_id']]['message_data']['video-offset-formatted'] = sprintf('%02d:%02d:%02d', $hours, $mins, $secs);
                 }
             }
             $response['result'] = $res;
@@ -80,7 +84,12 @@ if(!empty($_GET['get_messages'])){
             if($res->num_rows>0){
                 while($dat = $res->fetch_assoc()){
                     $response['data'] = $dat;
-                    $response['data']['message_data'] = json_decode($response['data']['message_data']);
+
+                    $response['data']['message_data'] = json_decode($response['data']['message_data'],true);
+                    $hours = floor($response['data']['message_data']['video-offset']/1000 / 3600);
+                    $mins = floor($response['data']['message_data']['video-offset']/1000 / 60 % 60);
+                    $secs = floor($response['data']['message_data']['video-offset']/1000 % 60);
+                    $response['data']['message_data']['video-offset-formatted'] = sprintf('%02d:%02d:%02d', $hours, $mins, $secs);
                 }
             }
 		}

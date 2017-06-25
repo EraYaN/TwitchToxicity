@@ -7,7 +7,7 @@
     <StartupFile>PreprocessorExport.py</StartupFile>
     <SearchPath>
     </SearchPath>
-    <WorkingDirectory>C:\Users\Erwin\OneDrive\Universiteit\Measuring the Internet\TwitchToxicity\</WorkingDirectory>
+    <WorkingDirectory>F:\Users\Erwin\OneDrive\Universiteit\Measuring the Internet\TwitchToxicity\</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>Preprocessor</Name>
     <RootNamespace>Preprocessor</RootNamespace>
