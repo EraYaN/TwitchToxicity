@@ -55,7 +55,11 @@ But the time needed to analyse an audio file was around 1:1, so 1 minute of audi
 We conclude that speechrecognintion on a massive dataset is still not an option. Maybe in 10 years when services are cheap and the recognition is way waster this might be an option.
 
 \section{Training}
-%Javascripts
+To analyse the chat data, we had to gather a training set in which the chat is rated based on their toxicity.
+We converted the compressed pickle file of %MLG...
+to a .sql insert statement to store the chat into a MySQL database.
+
+A website implemented in javascript and php showed this chat and we manually rated each chat message with a 1 to 5 (1 being non-toxic, 5 being very toxic).
 
 \section{Classifier}
 %NLTK
