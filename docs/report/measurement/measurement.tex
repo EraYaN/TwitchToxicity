@@ -17,8 +17,14 @@ YouTube-DL saves the files in json format,  The chat replays are converted to pi
 This results in about 1.5GB of pickle files, so the data was compressed to save about 750MB of space.
 The first step is to filter all the stored chats with a preprocessor to filter the twitch emotes and remove unusual characters to prepare the data for training and classification.
 When analyzing the data the classifier first needs to be trained to properly cast a verdict if a certain sentence is toxic or not.
-This was done manually by creating a web page that shows a message from a user and allowing us to decide if it is toxic. This verdict is stored in a large SQL database to use later for classification. All the steps in this process are described in more detail below.
+This was done manually by creating a web page that shows a message from a user and allowing us to decide if it is toxic. This verdict is stored in a large SQL database to use later for classification. 
+The flowchart of all these prosesses together is seen in Figure 2.1. All the steps in this process are described in more detail below.
 
+
+\begin{figure}
+	\includegraphics[width=\textwidth]{FlowChart.png}
+	\caption{Flow chart}
+\end{figure}
 
 \section{Video Downloader}
 First of all, all the video's that are uploaded by the 100 most popular streamers are collected. This is stored in a file which holds the streamer, together with the id's of each video.
