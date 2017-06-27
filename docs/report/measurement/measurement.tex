@@ -16,9 +16,9 @@ Only the chat replay is kept as audio and video analysis is out of scope of this
 YouTube-DL saves the files in json format,  The chat replays are converted to pickle files to use with python. 
 This results in about 1.5GB of pickle files, so the data was compressed to save about 750MB of space.
 The first step is to filter all the stored chats with a preprocessor to filter the twitch emotes and remove unusual characters to prepare the data for training and classification.
-When analyzing the data the classifier first needs to be trained to properly cast a verdict if a certain sentence is toxic or not.
+When analysing the data the classifier first needs to be trained to properly cast a verdict if a certain sentence is toxic or not.
 This was done manually by creating a web page that shows a message from a user and allowing us to decide if it is toxic. This verdict is stored in a large SQL database to use later for classification. 
-The flowchart of all these prosesses together is seen in Figure 2.1. All the steps in this process are described in more detail below.
+The flowchart of all these processes together is seen in Figure 2.1. All the steps in this process are described in more detail below.
 
 
 \begin{figure}
@@ -46,14 +46,20 @@ The TwitchVideoDownloader return the following files:
 A small script is used to convert all the json data to pickle format to use with python in the preprocessor script as pickle files are processed faster in python. Later it would become clear this would be obsolete as python is too slow to pre process all the data. This is described in the next section.
 
 \section{Preprocessor}
-Before we could train our classifier we must filter the chat. The chat is filled with emotes and ascii art which is not supported by our trainer/classifier.
-At first we started off with a python script which removed each word in TwitchEmotes.txt. All detected unicode characters are removed in the same way.
-The TwitchEmotes.txt file was relatively small in the beginning, so the python script could handle all the chat files fast enough. However, later we detected there are a lot more emotes, but also custom subscriber emotes by the streamers.
-This expanded our text file massively to around 150k words. 
-At this point, the python script needed 4 weeks to filter all chat files with the new emotes list.
+Before we could train our classifier we must filter the chat.
+The chat is filled with emotes and ascii art which is not supported by our trainer/classifier.
+At first we started off with a python script which removed each word in TwitchEmotes.txt.
+All detected unicode characters are removed in the same way.
+The TwitchEmotes.txt file was relatively small in the beginning, so the python script could handle all the chat files fast enough.
+However, later we detected there are a lot more emotes, but also custom subscriber emotes by the streamers.
+This expanded our text file massively to around 104k words. 
+At this point, the python script needed way to much time to filter all chat files with the new emotes list.
 
-So we switched to $C\#$ to implement our preprocessor as this language is significantly more efficient compared to python for handling large amounts of data.
-This script was able to filter the chat data within 5 minutes, a major improved compared to 4 weeks.
+So we switched to $C\#$ to implement our preprocessor as this language is significantly more efficient compared to python for loops and string replacement.
+This script was able to filter the chat data within 10 minutes, a major improved compared to the python script.
+It was further optimized by tokenizing the string and using a key lookup in a hashset of the words to be filtered.
+This processes about 200 thousand to 600 thousand messages per second on one core.
+This in comparison to about 1500 to 6000 messages per second on 16 cores by using the python implementation.
 Now the filtered data is ready to be used to train the classifier in detecting toxicity.
 
 \section{SpeechRecognition}
@@ -66,13 +72,17 @@ In the near future when services are cheaper and the recognition technology is m
 
 \section{Training}
 To analyse the chat data, we had to gather a training set in which the chat is rated based on their toxicity.
-We converted the compressed pickle file of %MLG...
-to a .sql insert statement to store the chat into a MySQL database.
+We converted the compressed pickle file of a chat log from the MLG channel to an SQL insert statement to store the chat into a MySQL database.
+A website implemented in JavaScript and PHP showed this chat and we manually rated each chat message with a 1 to 5 (1 being non-toxic, 5 being very toxic).
 
-A website implemented in javascript and php showed this chat and we manually rated each chat message with a 1 to 5 (1 being non-toxic, 5 being very toxic).
+The final training set is also filtered on words that are shorter than 3 letters to remove even more noise.
 
 \section{Classifier}
 %NLTK
-
+The classifier downloads a sub set of the manually classified data.
+Extracts word based features and trains a Naive Bayes or MaxEnt classifier.
+The problem was in the initial distribution of all the classes for the classifier.
+There are way too many messages rated 1 (non-toxic).
+Thus the output of the classified was mostly 1.000 (float).
 
 \end{document}
