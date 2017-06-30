@@ -67,21 +67,26 @@ def ProcessVideo(queue, configurer, video_info, root, skip_video):
 
     ydlw.download_video(video_info)
 
-    download_result = (ydlw.lastresult['status'] == 'finished')
+    if(ydlw.lastresult is not None):
 
-    base = os.path.splitext(ydlw.lastresult['filename'])[0]
-    api_info_file = base + '.apiinfo.pickle.{0}'.format(COMPRESSOR_EXTENSION)
-    threadlogger.info("Saving Twitch API video info....")
-    with compressor.open(api_info_file,'wb') as f:
-        info = pickle.dump(video_info,f)
+        download_result = (ydlw.lastresult['status'] == 'finished')
 
-    info_file = base + '.info.json'
+        base = os.path.splitext(ydlw.lastresult['filename'])[0]
+        api_info_file = base + '.apiinfo.pickle.{0}'.format(COMPRESSOR_EXTENSION)
+        threadlogger.info("Saving Twitch API video info....")
+        with compressor.open(api_info_file,'wb') as f:
+            info = pickle.dump(video_info,f)
 
-    #threadlogger.info("Reading YouTube-DL info....")
-    #with open(info_file,'r') as f:
-    #    info = json.load(f)    
-    threadlogger.info("Downloading chat....")
-    rechat_result = rs.download_rechat(CID, video_info, base + '.rechat.pickle.{0}'.format(COMPRESSOR_EXTENSION))
+        info_file = base + '.info.json'
+
+        #threadlogger.info("Reading YouTube-DL info....")
+        #with open(info_file,'r') as f:
+        #    info = json.load(f)    
+        threadlogger.info("Downloading chat....")
+        rechat_result = rs.download_rechat(CID, video_info, base + '.rechat.pickle.{0}'.format(COMPRESSOR_EXTENSION))
+    else:
+        rechat_result = False
+        download_result = False
 
     return (video_info['id'],download_result, rechat_result)
 

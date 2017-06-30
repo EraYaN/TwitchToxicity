@@ -32,7 +32,8 @@ class YouTubeDLWrapper:
             'outtmpl': os.path.realpath(os.path.join(root,'data/videos/%(uploader)s/%(title)s-%(id)s.%(ext)s')),
             'call_home': False,
             'logger': self.logger,
-            'format':'bestaudio/audio_oly/Audio_Only',
+            'format':'bestaudio/audio_only/Audio_Only',
+            'skip_download':True,
             'progress_hooks': [ self.progress_hook ]
         }
 
@@ -126,9 +127,11 @@ class YouTubeDLWrapper:
 
     def progress_hook(self, d):
         """Main Progress Hook"""
-        self.LogProgress(d)
-        if d['status'] != 'downloading':
-            self.lastresult = d
-        if d['status'] == 'finished':
-            self.logger.info('Done downloading, now converting...')
+        self.lastresult = d
+        if(d is not None): 
+            self.LogProgress(d)
+            if d['status'] != 'downloading':
+                self.lastresult = d
+            if d['status'] == 'finished':
+                self.logger.info('Done downloading, now converting...')
 

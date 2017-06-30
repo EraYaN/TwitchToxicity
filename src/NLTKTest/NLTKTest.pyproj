@@ -7,7 +7,7 @@
     <StartupFile>NLTKTest.py</StartupFile>
     <SearchPath>
     </SearchPath>
-    <WorkingDirectory>$(UserProfile)\OneDrive\Universiteit\Measuring the Internet\TwitchToxicity\</WorkingDirectory>
+    <WorkingDirectory>F:\Users\Erwin\OneDrive\Universiteit\Measuring the Internet\TwitchToxicity\</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>NLTKTest</Name>
     <RootNamespace>NLTKTest</RootNamespace>

@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsdiff/3.2.0/diff.min.js" type="text/javascript"></script>
+</head>
+<body>
+    <pre id="display"></pre>
+    
+    <script>
+        var one = 'beep boop',
+            other = 'beep boob blah',
+            color = '',
+            span = null;
+
+        var diff = JsDiff.diffChars(one, other),
+            display = document.getElementById('display'),
+            fragment = document.createDocumentFragment();
+
+        diff.forEach(function (part) {
+            // green for additions, red for deletions
+            // grey for common parts
+            color = part.added ? 'green' :
+                part.removed ? 'red' : 'grey';
+            span = document.createElement('span');
+            span.style.color = color;
+            span.appendChild(document
+                .createTextNode(part.value));
+            fragment.appendChild(span);
+        });
+
+        display.appendChild(fragment);
+    </script>
+</body>
+</html>
