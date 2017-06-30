@@ -1,0 +1,14 @@
+%!TEX program = xelatex
+%!TEX spellcheck = en_GB
+\documentclass[final]{report}
+\input{../../.library/preamble.tex}
+\input{../../.library/style.tex}
+\addbibresource{../../.library/bibliography.bib}
+\begin{document}
+\chapter{Related Work}
+\label{ch:relatedwork}
+
+Toxic behaviour has been researched before, a paper titled "Toxicity Detection in Multiplayer Online Games" written by Marcus Martens, Siqi Shen, Alexandru Iosup and Fernando Kuipers analyses toxic behaviour in one of the ancestors of the MOBA genre: Defence of the Ancients. The paper describes detection based on patterns, lists and lettersets. Especially detecting based on lettersets is an interesting point that could be used in this project too. The twitch chat uses similar intentionally misspelled words like "looool" instead of "lol". Currently our algorithm cannot distinguish between these words while they essentially mean the same. The dota dataset was also preprocessed, removing games that ended instantly and removing other languages besides english.
+
+
+\end{document}

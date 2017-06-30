@@ -65,9 +65,9 @@ Now the filtered data is ready to be used to train the classifier in detecting t
 \section{SpeechRecognition}
 Originally we wanted to analyse the interaction between the streamer and the users, so we needed data from the streamer.
 The audio downloaded was used with the python library SpeechRecognition %https://pypi.python.org/pypi/SpeechRecognition/%.
-But the time needed to analyse an audio file was around 1:1, so 1 minute of audio took 1 minute to parse. The text that was returned was completely gibberish and useless.
+But the time needed to analyse an audio file was around 1:1, so 1 minute of audio took 1 minute to parse. The result of the speech recognition was far from usable, returning mostly nonsense.
 This is expected as speech recognition is still not at the required level to properly gather reliable data, moreover music is usually played on stream and together with game sounds this interferes significantly with the speech recognition.
-We conclude that speech recognition on a massive dataset is still not a viable option. 
+We conclude that speech recognition on a massive dataset is still not a viable option.
 In the near future when services are cheaper and the recognition technology is more advanced it could become interesting to look into this.
 
 \section{Training}
