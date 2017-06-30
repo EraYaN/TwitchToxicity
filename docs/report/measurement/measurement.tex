@@ -66,6 +66,15 @@ Now the filtered data is ready to be used to train the classifier in detecting t
 Originally we wanted to analyse the interaction between the streamer and the users, so we needed data from the streamer.
 The audio downloaded was used with the python library SpeechRecognition. %https://pypi.python.org/pypi/SpeechRecognition/%.
 But the time needed to analyse an audio file was around 1:1, so 1 minute of audio took 1 minute to parse. The result of the speech recognition was far from usable, returning mostly nonsense.
+
+Different speech recognition toolkits were looked into:
+\begin{enumerate}
+\item Python speech recognition 3.7.1 which includes CMU Sphinx as speech recognition software. It is very slow as the processing must happen in real-time.
+\item Dragon Speech Recognition Software, which is a professional software package. However it has high price which makes it not viable for our project.
+\item Google Cloud Speech API, google has a free tool that can be used for speech recognition. It is however very slow like all other tools and does not return usable text.
+\end{enumerate}
+
+All the tools used work in real-time, so this means they are all very slow, likewise none of them returned usable data that doesn't contain errors.
 This is expected as speech recognition is still not at the required level to properly gather reliable data, moreover music is usually played on stream and together with game sounds this interferes significantly with the speech recognition.
 We conclude that speech recognition on a massive dataset is still not a viable option.
 In the near future when services are cheaper and the recognition technology is more advanced it could become interesting to look into this.
