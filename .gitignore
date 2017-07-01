@@ -385,3 +385,4 @@ script/**/*.jpg
 
 
 !feedback/*.pdf
+.idea/
