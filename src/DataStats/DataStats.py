@@ -9,7 +9,7 @@ try:
     import ujson as json
 except:
     import json
-
+	
 def pickleStats(file):
 	with compressor.open(file, 'rb') as read_file:
 		if os.path.getsize("stats.pickle") > 0: 
