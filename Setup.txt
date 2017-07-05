@@ -1,0 +1,25 @@
+Introduction
+	- Initial idea/blabla
+
+Related work
+	- Marcus
+	
+Data gathering
+	- Video Downloader
+	- Preprocessor
+
+Results/Dataset
+	- Word count
+	- Verdeling van users
+	- Deleted messages 
+	
+Measuring
+	- Speechrec
+	- Training
+	- MySQL
+	- Classifier
+	
+Conclusion
+	
+Future work
+	- Combining stream/game metadata with chat data
