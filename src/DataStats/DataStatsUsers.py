@@ -3,10 +3,11 @@ import lzma as compressor
 import json
 import os
 COMPRESSOR_EXTENSION = 'xz'
+#os.chdir('D:\Onedrive\TwitchToxicity')
 
 def userstats(file):
-	if os.path.getsize("statsusers2.pickle") > 0: 
-		with open("statsusers2.pickle", 'rb') as saved_value:
+	if os.path.getsize("statsUsers3.pickle") > 0: 
+		with open("statsUsers3.pickle", 'rb') as saved_value:
 			results = pickle.load(saved_value)
 	else:
 		results = {}
@@ -29,19 +30,19 @@ def userstats(file):
 			if user not in result:
 				result.append(user)
 		results[streamer] = result
-	with open("statsusers2.pickle", 'wb') as output_file:
+	with open("statsusers3.pickle", 'wb') as output_file:
 		pickle.dump(results, output_file)		
 	
 
 if __name__ == "__main__":
-	#test_pickle = "D:/Onedrive/TwitchToxicity/data/videos/MLG/G2 vs Cloud9 - Group D  - MLG CSGO Major-v57640742.rechat-filtered.pickle.xz"
+	#test_pickle = "./data/videos/MLG/G2 vs Cloud9 - Group D  - MLG CSGO Major-v57640742.rechat-filtered.pickle.xz"
 	#userstats(test_pickle)
-	for root, dirs, files in os.walk("D:/Onedrive/TwitchToxicity/data/videos", topdown=False):
+	for root, dirs, files in os.walk("./data/videos", topdown=False):
 		for name in files:
 			if name.endswith('rechat-filtered.pickle.{0}'.format(COMPRESSOR_EXTENSION)):
 				print("Now precessing: ")
-				print(root+name)
+				try:	
+					print(root+name)
+				except UnicodeEncodeError:
+					print("Can't print name!")
 				userstats(os.path.join(root, name))
-	with open("statsusers2.pickle", 'rb') as results:
-		for line in results:
-			print(line)
