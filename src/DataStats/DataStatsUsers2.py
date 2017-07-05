@@ -6,6 +6,7 @@ from operator import itemgetter
 COMPRESSOR_EXTENSION = 'xz'
 import numpy as np
 import matplotlib.pyplot as plt
+from scipy.interpolate import spline
 
 users = {}
 with open("statsUsers.pickle", 'rb') as read_file:
@@ -28,9 +29,13 @@ for i in range(1, max_streams+1):
 	count[i] = 0
 for value in users.values():
 	count[value] += 1
-plt.plot(list(count.keys()),list(count.values()))
+	
+xnew = np.linspace(min(count.keys()),max(count.keys()),200)
+smooth = spline(list(count.keys()),list(count.values()),xnew)
+plt.plot(xnew,smooth)
+#plt.plot(list(count.keys()),list(count.values()))
 #plt.axis([1, max_streams, 0, (max(count.values()))])
-plt.yscale('log')
+#plt.yscale('log')
 plt.xlabel('Number of differents streamers')
 plt.ylabel('Number of users')
 plt.show()
