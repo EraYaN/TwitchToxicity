@@ -1,14 +1,15 @@
 <script id="message-template" type="text/x-handlebars-template">
     <div class="col-12 col-md-12 message {{#if (gt num_classifications 0)}}message-classified{{/if}}" id="message{{message_id}}" data-message-id="{{message_id}}">
         <div class="row">
-            <div class="col-md-1">
-                <small>#{{message_id}} <span id="message-classification{{message_id}}">{{users}} ({{num_classifications}})</span></small>
+            <div class="col-md-2">
+                <small>#{{message_id}} <span id="message-classification{{message_id}}">{{users}} ({{num_classifications}})</span></small><br />
+                <small>{{message_data.video-offset-formatted}} ({{message_data.video-offset}})</small>
             </div>
             <div class="col-md-7">
-                <p class="">From <strong>{{message_data.attributes.from}}</strong>: {{{message_data.attributes.message-diff}}}</p>
+                <p class="">From <strong>{{message_data.from}}</strong>: {{{message_data.message-diff}}}</p>
             </div>
-            <div class="col-md-4">
-                <div class="btn-group float-right" role="group" aria-label="Classification Buttons">
+            <div class="col-md-3">
+                <div class="btn-group btn-group-sm float-right" role="group" aria-label="Classification Buttons">
                     <button type="button" data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-secondary message-button{{message_id}} {{#if (eq classification 1)}}active{{/if}}" onclick="submit_classification({{message_id}},this.value); return false;" value="1">1</button>
                     <button type="button" data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-secondary message-button{{message_id}} {{#if (eq classification 2)}}active{{/if}}" onclick="submit_classification({{message_id}},this.value); return false;" value="2">2</button>
                     <button type="button" data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-secondary message-button{{message_id}} {{#if (eq classification 3)}}active{{/if}}" onclick="submit_classification({{message_id}},this.value); return false;" value="3">3</button>
@@ -40,13 +41,13 @@
             </div>
         </form>
     </div>
-    
+
 </div>
 <div class="row" id="classifier">
     <div class="col-12 col-md-12">
         <h3>Messages</h3><button class="btn btn-sm btn-secondary" onclick="refresh(); return false;">Refresh</button>
-        
-        
+
+
         <div class="row" id="messages_container">
 
         </div>

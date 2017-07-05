@@ -124,7 +124,7 @@ function submitFailM(jqXHR, textStatus, errorThrown) {
 }
 
 function generate_message_HTML(message) {
-    var diff = JsDiff.diffChars(message.message_data.attributes['message'], message.message_data.attributes['message-filtered']);
+    var diff = JsDiff.diffChars(message.message_data['message'], message.message_data['message-filtered']);
     var fragment = document.createDocumentFragment();
     var color = '',
         span = null;
@@ -139,7 +139,7 @@ function generate_message_HTML(message) {
             .createTextNode(part.value));
         fragment.appendChild(span);
     });
-    message.message_data.attributes['message-diff'] = $('<div>').append(fragment).html();
+    message.message_data['message-diff'] = $('<div>').append(fragment).html();
     return messageTemplate(message);
 }
 

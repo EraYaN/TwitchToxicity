@@ -30,9 +30,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="ajax.php" />
+    <Compile Include="api.php" />
     <Compile Include="classifierpage.php" />
     <Compile Include="common.inc.php" />
     <Compile Include="index.php" />
+    <Compile Include="migrate.php" />
     <Compile Include="passwordhash.php" />
   </ItemGroup>
   <ItemGroup>
@@ -44,6 +46,7 @@
     <Content Include="js\handlebars.runtime-v4.0.4.js" />
     <Content Include="js\helpers.js" />
     <Content Include="js\jquery.scrollTo.js" />
+    <Content Include="migrationdata.json" />
     <Content Include="test.html" />
   </ItemGroup>
   <ItemGroup>

@@ -16,8 +16,8 @@ namespace Preprocessor.NET
         static void Main(string[] args)
         {
             string emotesFile = "./data/resources/TwitchEmotes.txt";
-            string dataFile = @"C:\Users\Erwin\OneDrive\Universiteit\Measuring the Internet\TwitchToxicity\data\videos\AmazHS\Amaz - King of Cards-v129936530.rechat.json";
-            string dataFileOut = @"C:\Users\Erwin\OneDrive\Universiteit\Measuring the Internet\TwitchToxicity\data\videos\AmazHS\Amaz - King of Cards-v129936530.rechat-filtered.json";
+            string dataFile = @"F:\Users\Erwin\OneDrive\Universiteit\Measuring the Internet\TwitchToxicity\data\videos\MLG\Luminosity Gaming vs Virtus Pro - Quarter Finals - MLG CSGO Major-v58219102.rechat.json";
+            string dataFileOut = @"F:\Users\Erwin\OneDrive\Universiteit\Measuring the Internet\TwitchToxicity\data\videos\MLG\Luminosity Gaming vs Virtus Pro - Quarter Finals - MLG CSGO Major-v58219102.rechat-filtered.json";
             bool useStdOut = false;
             bool first = true;
             if (args.Count() == 2)
@@ -29,10 +29,12 @@ namespace Preprocessor.NET
                 Console.WriteLine("Got {0} input arguments. No input and output file. Using test file.",args.Count());
                 useStdOut = false;
             }
-            long messages = 0;
+            long messages = 0, messages_included = 0;
             Console.Error.WriteLine("Reading Emotes...");
-            string[] emotesStrs = File.ReadAllLines(emotesFile);
+            List<string> emotesStrs = new List<string>(File.ReadAllLines(emotesFile));
+            emotesStrs = emotesStrs.ConvertAll(d => d.ToLower());
             HashSet<string> emotes = new HashSet<string>(emotesStrs);
+            emotesStrs = null;
             Console.Error.WriteLine("Read {0} Emotes.",emotes.Count());
             Console.Error.WriteLine("Filtering...");
             var watch = System.Diagnostics.Stopwatch.StartNew();
@@ -44,7 +46,7 @@ namespace Preprocessor.NET
 
             } else {
                 stream = new FileStream(dataFile, FileMode.Open);
-                outstream = new FileStream(dataFileOut, FileMode.OpenOrCreate);
+                outstream = new FileStream(dataFileOut, FileMode.Create);
             }
             using (var writer = new StreamWriter(outstream))
             using (var jsonWriter = new JsonTextWriter(writer))
@@ -59,8 +61,7 @@ namespace Preprocessor.NET
                 foreach (var item in result)
                 {
                     string fMessage = item.Message;
-                    if (item.HasEmotes)
-                        fMessage = Filter(emotes, fMessage);
+                    fMessage = Filter(emotes, fMessage);
 
                     item.MessageFiltered = StripUnicode(fMessage).Trim();
                     if (item.MessageFiltered.Length > 0)
@@ -75,9 +76,14 @@ namespace Preprocessor.NET
                         }
 
                         serializer.Serialize(jsonWriter, item);
+                        messages_included++;
                     }
                     
                     messages++;
+                    /*if (messages >= 10000)
+                    {
+                        break;
+                    }*/
                 }
                 writer.WriteLine();
                 writer.WriteLine(']');
@@ -85,7 +91,7 @@ namespace Preprocessor.NET
             stream.Close();
             outstream.Close();
             watch.Stop();
-            Console.Error.WriteLine("Filtered {0} messages in {1:f2} seconds, {2:f2} messages per second.", messages, watch.Elapsed.TotalSeconds, messages/watch.Elapsed.TotalSeconds);
+            Console.Error.WriteLine("Filtered {0} down to {3} messages in {1:f2} seconds, {2:f2} messages per second.", messages, watch.Elapsed.TotalSeconds, messages/watch.Elapsed.TotalSeconds, messages_included);
             
             //Console.ReadKey();
         }
@@ -108,7 +114,7 @@ namespace Preprocessor.NET
 
         static public string Filter(HashSet<string> emotes, string message)
         {          
-            return string.Join(" ", message.Split(' ').Select(w => emotes.Contains(w) ? "" : w));
+            return string.Join(" ", message.Split(' ').Select(w => emotes.Contains(w.ToLowerInvariant()) ? "" : w));
         }
        
 

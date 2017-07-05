@@ -256,7 +256,7 @@ messages = load_compressed_pickle('data.pickle.xz')
 count = 0
 
 for message in messages:
-	msg = strip_unicode(message['attributes']['message']).lower()
+	msg = message['attributes']['message-filtered'].lower()
 	if msg != "" and msg[0] != '!':
 		features = classify(pos, neg, swr, msg)
 		idx = message['attributes']['tags']['id']
