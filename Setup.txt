@@ -13,7 +13,7 @@ Results/Dataset
 	- Verdeling van users
 	- Deleted messages 
 	
-Measuring
+Uncompleted results
 	- Speechrec
 	- Training
 	- MySQL

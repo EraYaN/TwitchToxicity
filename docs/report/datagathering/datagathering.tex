@@ -5,8 +5,8 @@
 \input{../../.library/style.tex}
 \addbibresource{../../.library/bibliography.bib}
 \begin{document}
-\chapter{Measurement}
-\label{ch:measurement}
+\chapter{Data Gathering}
+\label{ch:datagathering}
 
 This section describes the acquisition and measuring of the data for this project.
 To acquire the data necessary twitch replay videos where downloaded from twitch using YouTube-DL.
@@ -18,12 +18,13 @@ This results in about 1.5GB of pickle files, so the data was compressed to save 
 The first step is to filter all the stored chats with a preprocessor to filter the twitch emotes and remove unusual characters to prepare the data for training and classification.
 When analysing the data the classifier first needs to be trained to properly cast a verdict if a certain sentence is toxic or not.
 This was done manually by creating a web page that shows a message from a user and allowing us to decide if it is toxic. This verdict is stored in a large SQL database to use later for classification. 
-The flowchart of all these processes together is seen in Figure 2.1. All the steps in this process are described in more detail below.
+The flowchart of all these processes together is seen in Figure \ref{fig:flowchart}. All the steps in this process are described in more detail below.
 
 
-\begin{figure}
+\begin{figure}[h]
 	\includegraphics[width=\textwidth]{FlowChart.png}
 	\caption{Flow chart}
+	\label{fig:flowchart}
 \end{figure}
 
 \section{Video Downloader}
@@ -61,37 +62,5 @@ It was further optimized by tokenizing the string and using a key lookup in a ha
 This processes about 200 thousand to 600 thousand messages per second on one core.
 This in comparison to about 1500 to 6000 messages per second on 16 cores by using the python implementation.
 Now the filtered data is ready to be used to train the classifier in detecting toxicity.
-
-\section{SpeechRecognition}
-Originally we wanted to analyse the interaction between the streamer and the users, so we needed data from the streamer.
-The audio downloaded was used with the python library SpeechRecognition. %https://pypi.python.org/pypi/SpeechRecognition/%.
-But the time needed to analyse an audio file was around 1:1, so 1 minute of audio took 1 minute to parse. The result of the speech recognition was far from usable, returning mostly nonsense.
-
-Different speech recognition toolkits were looked into:
-\begin{enumerate}
-\item Python speech recognition 3.7.1 which includes CMU Sphinx as speech recognition software. It is very slow as the processing must happen in real-time.
-\item Dragon Speech Recognition Software, which is a professional software package. However it has high price which makes it not viable for our project.
-\item Google Cloud Speech API, google has a free tool that can be used for speech recognition. It is however very slow like all other tools and does not return usable text.
-\end{enumerate}
-
-All the tools used work in real-time, so this means they are all very slow, likewise none of them returned usable data that doesn't contain errors.
-This is expected as speech recognition is still not at the required level to properly gather reliable data, moreover music is usually played on stream and together with game sounds this interferes significantly with the speech recognition.
-We conclude that speech recognition on a massive dataset is still not a viable option.
-In the near future when services are cheaper and the recognition technology is more advanced it could become interesting to look into this.
-
-\section{Training}
-To analyse the chat data, we had to gather a training set in which the chat is rated based on their toxicity.
-We converted the compressed pickle file to a chat log from the MLG channel to an SQL insert statement to store the chat into a MySQL database.
-A website implemented in JavaScript and PHP showed this chat and we manually rated each chat message with a 1 to 5 (1 being non-toxic, 5 being very toxic).
-
-The final training set is also filtered on words that are shorter than 3 letters to remove even more noise.
-
-\section{Classifier}
-%NLTK
-The classifier downloads a sub set of the manually classified data.
-Extracts word based features and trains a Naive Bayes or MaxEnt classifier.
-The problem was in the initial distribution of all the classes for the classifier.
-There are way too many messages rated 1 (non-toxic).
-Thus the output of the classified was mostly 1.000 (float).
 
 \end{document}
