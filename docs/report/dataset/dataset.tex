@@ -11,50 +11,63 @@
 %From Analysis:
 This section describes how the data that was gathered in the previous steps will be analysed using the proper tools. The main goal is to see whether certain toxic users are only toxic when they are viewing a certain streamer or in every channel they visit. So whether viewers match their toxicity level to the channel. Another interesting question is to see if certain channels are more toxic than others and how this affects the toxicity levels of the users. 
 
+\section{Streamers per User}
+Twitch users like to view different games. And therefore watch to different Streamers. In this dataset there are a lot of users that only watch streams of one streamer. But there are also a lot that wath streams of other streamers. In Figure \ref{fig:streamPerUser} the streamers per users are plot on a logaritmic scale. In the original dataset there were users that watched to even more streamers, but those were bots. The user on top of this list was present in all chat rooms, because this was a bot from twitch itself, to place notifications in the chat.\\
+If we had more data aboutthe toxicity of users we could see if users that are toxic in one chat are only toxic by that streamer, or by multiple. 
 
-\begin{table}[]
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\textwidth]{StreamersPerUser.png}
+	\caption{Streamers per User}
+	\label{fig:streamPerUser}
+\end{figure}
+
+\noindent
+\begin{minipage}{.5\textwidth}
+  
+\section{Wordcount}
+One of the things we can get from our dataset is the number of times a certain word is used.
+Certain words are expected to occur a lot. These are words used in the english language a lot. A lot of articles, like "the", are seen. Also team names are found on top of this list. To be able to analyze these results better, team names, articles and a few other words are left out. The first 25 words of this filtered list is shown in Table \ref{wordcounttabel}.\\
+The one on top, "vac", is said the most. It most likely is said when a user thinks someone is cheating. This conclusion is made because VAC is the name off the anti-cheat system of Valve (Valve Anti-Cheat System). Valve is the creator of Steam, a platform for games. The word "VAC" can be seen as toxic, because it is an accusation towards the streamer, or the other players in the game."VAC" is said a lot when a player in the game does something that is almost impossible, so it could also be jealousy from the user.\\
+In the dataset we see that Twitch users like to say where they are from. That's why we see "na", "eu" and "usa" high in this list. "na" most likely stands for North America and "eu" is the European Union. The words are not toxic by themselves, but there could start a discussion by the users about what continent or country is better and with that toxic comments are possible.\\
+"fuck" is high in this list, as expected. But luckaly the words "good" and "nice" occur more. Unfortunately "good" and "nice" could also be used in a toxic way. When they are used in a sarcastic way, the sentence will be toxic. 
+
+\end{minipage}% This must go next to `\end{minipage}`
+\begin{minipage}{.5\textwidth}
 \centering
-\caption{Table with the number of times words are used in the dataset.}
+\captionof{table}{Number of times words are used.}
 \label{wordcounttabel}
-\begin{tabular}{l|l|l|}
-\cline{2-3}
-                         & Word         & Wordcount \\ \hline
-\multicolumn{1}{|l|}{1}  & the          & 156229    \\ \hline
-\multicolumn{1}{|l|}{2}  & vac          & 134034    \\ \hline
-\multicolumn{1}{|l|}{3}  & is           & 126346    \\ \hline
-\multicolumn{1}{|l|}{4}  & lol          & 122647    \\ \hline
-\multicolumn{1}{|l|}{5}  & lul          & 105450    \\ \hline
-\multicolumn{1}{|l|}{6}  & goldfishlove & 98624     \\ \hline
-\multicolumn{1}{|l|}{7}  & a            & 95332     \\ \hline
-\multicolumn{1}{|l|}{8}  & i            & 90921     \\ \hline
-\multicolumn{1}{|l|}{9}  & na           & 86260     \\ \hline
-\multicolumn{1}{|l|}{10} & 3            & 85632     \\ \hline
-\multicolumn{1}{|l|}{11} & you          & 78717     \\ \hline
-\multicolumn{1}{|l|}{12} & to           & 76147     \\ \hline
-\multicolumn{1}{|l|}{13} & this         & 54371     \\ \hline
-\multicolumn{1}{|l|}{14} & in           & 53070     \\ \hline
-\multicolumn{1}{|l|}{15} & go           & 51156     \\ \hline
-\multicolumn{1}{|l|}{16} & for          & 49739     \\ \hline
-\multicolumn{1}{|l|}{17} & and          & 48964     \\ \hline
-\multicolumn{1}{|l|}{18} & on           & 48148     \\ \hline
-\multicolumn{1}{|l|}{19} & it           & 47315     \\ \hline
-\multicolumn{1}{|l|}{20} & rip          & 46703     \\ \hline
-\multicolumn{1}{|l|}{21} & that         & 40717     \\ \hline
-\multicolumn{1}{|l|}{22} & god          & 40136     \\ \hline
-\multicolumn{1}{|l|}{23} & nip          & 39178     \\ \hline
-\multicolumn{1}{|l|}{24} & ez           & 37953     \\ \hline
-\multicolumn{1}{|l|}{25} & so           & 37911     \\ \hline
-\multicolumn{1}{|l|}{26} & of           & 37455     \\ \hline
-\multicolumn{1}{|l|}{27} & bot          & 36822     \\ \hline
-\multicolumn{1}{|l|}{28} & no           & 36745     \\ \hline
-\multicolumn{1}{|l|}{29} & my           & 34792     \\ \hline
-\multicolumn{1}{|l|}{30} & what         & 32508     \\ \hline
-\multicolumn{1}{|l|}{31} & lg           & 31513     \\ \hline
-\multicolumn{1}{|l|}{32} & are          & 31480     \\ \hline
-\multicolumn{1}{|l|}{33} & drop         & 30235     \\ \hline
-\multicolumn{1}{|l|}{34} & sourpls      & 28612     \\ \hline
-\multicolumn{1}{|l|}{35} & 1            & 28500     \\ \hline
+\begin{tabular}{|l|l|}
+\hline
+Word    & Wordcount \\ \hline
+vac     & 134034    \\ \hline
+lol     & 122647    \\ \hline
+na      & 86260     \\ \hline
+rip     & 46703     \\ \hline
+god     & 40136     \\ \hline
+nip     & 39178     \\ \hline
+ez      & 37953     \\ \hline
+bot     & 36822     \\ \hline
+lg      & 31513     \\ \hline
+drop    & 30235     \\ \hline
+sourpls & 28612     \\ \hline
+vp      & 27679     \\ \hline
+eu      & 25986     \\ \hline
+game    & 22379     \\ \hline
+rekt    & 22321     \\ \hline
+usa     & 22265     \\ \hline
+nt      & 20692     \\ \hline
+cobble  & 18345     \\ \hline
+nice    & 18161     \\ \hline
+good    & 17439     \\ \hline
+fuck    & 17424     \\ \hline
+why     & 17364     \\ \hline
+faze    & 16938     \\ \hline
+lmao    & 16266     \\ \hline
 \end{tabular}
-\end{table}
+
+\end{minipage}
+
+
 
 \end{document}

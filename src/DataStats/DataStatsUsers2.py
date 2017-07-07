@@ -7,6 +7,7 @@ COMPRESSOR_EXTENSION = 'xz'
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.interpolate import spline
+os.chdir('D:\Onedrive\TwitchToxicity')
 
 users = {}
 with open("statsUsers.pickle", 'rb') as read_file:
