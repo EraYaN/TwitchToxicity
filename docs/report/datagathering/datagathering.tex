@@ -31,15 +31,17 @@ The flowchart of all these processes together is seen in Figure \ref{fig:flowcha
 First of all, all the video's that are uploaded by the 100 most popular streamers are collected. This is stored in a file which holds the streamer, together with the id's of each video.
 This is done using the TwitchVideoIDCollector script. The most popular streamers are hardcoded, but can be extended easily in case the current dataset is not large enough for our goals.
 
+One problem is that the Twitch API doesn't return all videos that can be seen on the website, so this limits the returned datasize.
+
 After all the video id's are collected, the script TwitchVideoDownloader uses this list to fetch all the video's.
 Some filtering is already at place here. The rechat functionality was implemented by Twitch at 2016-02-23, so all that are published before this date is useless since we are mainly interested in the chat.
-The downloader also downloaded the video which only contains audio. Later we decided to leave the video/audio, since speech recognition is still too hard.
+The downloader also downloaded the video which only contains audio. At a later point we decided to leave the video/audio, since it will take too much time to analyze and extract the sentences.
 
-The TwitchVideoDownloader return the following files:
+The TwitchVideoDownloader returns the following files:
 \begin{itemize}
 \item A thumbnail
 \item A json file with metadata of the video, which contains info like audio codec, frame rate and upload date.
-\item A json file with apiinfo
+\item A json file with api info
 \item A json file with the chat
 \item A mp4 with the video, which only contains audio.
 \end{itemize}
@@ -50,11 +52,11 @@ A small script is used to convert all the json data to pickle format to use with
 
 \section{Preprocessor}
 Before we could train our classifier we must filter the chat.
-The chat is filled with emotes and ascii art which is not supported by our trainer/classifier.
+The chat is filled with emotes and ascii art which is not supported by the trainer/classifier.
 At first we started off with a python script which removed each word in TwitchEmotes.txt.
 All detected unicode characters are removed in the same way.
 The TwitchEmotes.txt file was relatively small in the beginning, so the python script could handle all the chat files fast enough.
-However, later we detected there are a lot more emotes, but also custom subscriber emotes by the streamers.
+However, in a later stage we detected there are a lot more emotes, but also custom subscriber emotes by the streamers.
 This expanded our text file massively to around 104k words. 
 At this point, the python script needed way to much time to filter all chat files with the new emotes list.
 
