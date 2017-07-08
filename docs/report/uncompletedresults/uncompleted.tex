@@ -9,7 +9,15 @@
 \chapter{Uncompleted Results}
 \label{ch:Uncompleted Results}
 
-This chapter contains work that is uncompleted that was intended to be part of the project, but for several possible reasons was not included. That could be not enough time, unsuited tools or we couldn't get it to work. 
+This chapter contains work that is uncompleted that was intended to be part of the project, but for several possible reasons was not included or not finished. That could be not enough time, unsuited tools or we couldn't get it to work. So if one wants to follow up on the project, these are several topics which could be further developed:
+
+\begin{enumerate}
+	\item Speech recognition
+	\item Training
+	\item Classifier
+	\item Game metadata
+	\item Twitch API fix
+\end{enumerate}
 
 \section{SpeechRecognition}
 Originally we wanted to analyse the interaction between the streamer and the users, so we needed data from the streamer.
@@ -43,12 +51,25 @@ On the far left the message number and the timestamp of the message is shown, to
 %NLTK
 
 %From results, about the classifier
-After the training set is complete and present in the database it can be used to classify other data. The classifier downloads a sub set of the manually classified data, then extracts word based features and trains a Naive Bayes or MaxEnt classifier.
+After the training set is complete and present in the database it can be used to classify other data. The classifier downloads a sub set of the manually classified data, then extracts word based features and trains a classifier.
 The problem was in the initial distribution of all the classes for the classifier.
-There are way too many messages rated 1 (non-toxic).
-Thus the output of the classified was mostly 1.000 (float).
+There are way too many messages rated 1 (non-toxic). Thus the output of the classified was mostly 1.000 (float). Other classifiers that could be used instead of the current Python NLTK are:
+
+\begin{enumerate}
+	\item \textbf{VADER Sentiment Analysis}, Valence Aware Dictionary and sEntiment Reasoner. This is a lexicon and rule-based sentiment analysis tool that is specifically attuned to sentiments expressed in social media, and works well on texts from other domains \cite{vader}.
+	\item \textbf{Naive Bayes}, a text classifier based on Naive Bayes. Which are methods of supervised learning algorithms based on applying Bayes' theorem with the "naive" assumption of independence between every pair of features \cite{naivebayes}.
+	\item \textbf{MaxEnt}, Maximum Entropy Classifiers. This is a classifier model that is based on the maximum entropy modeling framework. This framework considers all of the probability distributions that are empirically consistent with the training data; and chooses the distribution with the highest entropy \cite{maxent}.
+\end{enumerate}
 
 The idea was that the results would give an average degree of toxicity for certain streamers to compare, but also users individually per channel viewed. Based on those results different viewers could also be compared in different channels to see how the toxicity in a channel affects the viewers. So in other words if the toxicity in twitch streams is also contagious.
+
+\section{Game Metadata}
+
+If somehow the game metadata of what is happening in game with timestamps could be obtained it would be highly valuable to give better insight in why the chat responds in certain ways. Speech recognition was one of the options to achieve this, but will always give results with high noise in the data. If this metadata could be obtained from the game itself it would contain no noise.
+
+\section{Twitch API}
+
+Unfortunately the current Twitch API does not always return what is expected. For example when trying to download all the videos of the company behind League of Legends, Riotgames, from Twitch, it returns only a fraction of the expected videos which are highly outdated and currently of no use. As this is the responsibility of Twitch there is currently little that can be done about this, in the future when Twitch could have updated their API the video download script might work more optimal.
 
 
 \end{document}
