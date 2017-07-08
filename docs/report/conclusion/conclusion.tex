@@ -8,4 +8,10 @@
 \chapter{Conclusion}
 \label{ch:conclusion}
 
+Developing a system to detect toxicity in Twitch streaming communities was harder than expected. The project didn't reach much further than creating a tool that can gather a large dataset from twitch using YouTube-DL and the Twitch API. Unfortunately the Twitch API did not always return all the data that was requested. Nonetheless this resulted in a dataset of over 1.5 GB of messages sent in streams of various games. This dataset was analyzed for wordcount, toxicity by looking at deleted messages and the number of streamers a user watches. (conclusion of analysis)
+
+Furthermore a start was made with training a classifier with a part of the current dataset. A web page was created to allow users to rate messages for toxic content from which the result is stored in a SQL database. This database was briefly used with the MaxEnt classifier which gave unrealistic results.
+
+Besides analyzing the Twitch chat an attempt was made to use speech recognition software to detect what the streamer was saying at certain points during the stream. The purpose of this data was to compare it with the Twitch chat to see how much influence the streamer has on the toxicity in the chat. However the speech recognition software is nowhere near the required level to produce sensible data that can be used for this purpose. 
+
 \end{document}
