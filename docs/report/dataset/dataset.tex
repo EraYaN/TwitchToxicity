@@ -77,10 +77,7 @@ Points of interest about the deleted messages are:
 
 
 \subsection{Deleted messages per user}
-We wanted to see if a users behaves the same way in different video's. If this is the case, one could conclude that the toxicity is due the user and not the streamer. If the looks random, one could conclude that the streamer has more influence to the toxicity of the users.
-
-However, this is very hard to visualize and generalize for different users/streamers of the entire dataset.
-Because of this, we took a one streamer (AmazHS) and picked some videos and compared them.
+We wanted to see if users behave the same way in different videos. This is interesting as it could show how much influence viewers have on each other in terms of toxicity. Because we have very little data on the behaviour of the streamer not much can be said about the influence a streamer has on his/her viewers. One streamer "AmazHS" was picked and different videos of him were compared in terms of deleted message ratios per user. The data below shows the users with the highest ratio of deleted messages, a filter was set to have a minimum of at least 10 messages per user to remove one time spammers and noise. It could occur that only a single or two users fit the criteria of the filter, hence the different number of users per line in some cases. Each line is a different video.
 
 \begin{verbatim}
 [('datguyzed', 0.416), ('everdreen', 0.181)]
@@ -99,8 +96,7 @@ Because of this, we took a one streamer (AmazHS) and picked some videos and comp
 [('meezy_money', 0.384)]
 \end{verbatim}
 
-As can be seen, there isn't a pattern visible. So it looks that the users are randomly being toxic.\\
-However, it's very likely that we have not enough data to get such results. It's possible that we don't have the same users watching, and that the toxic users only appear in one video.
+There is no real apparent pattern, most likely because most viewers do not watch every single video by a streamer. Or some users simply do not always send enough messages.\\
 
 \subsection{Deleted messages per stream}
 Before we calculate the ratio, we want to filter the data some more. We exclude all the users in a single chat-log that have posted less than 10 messages. So only users that posted more than 10 messages are considered 'real' users, that tend to watch the stream. 
@@ -117,7 +113,7 @@ In figure \ref{fig:deletedPerStream} we took the three largest streamers in our 
 As can be seen, the MLG stream has the most amount of low ratio users, and the amount decreases as the ratio increases. However, in the dreamhackcs data we see that the lowest ratio doesn't have the highest amount of users. The line increases in the beginning and the most users with deleted message have a ratio around 10-20$\%$. After this peak all streams show a similar pattern toward a higher ratio.
 However, and the end we see a jump at a ratio of 1. These are the users that got all of their messages deleted (10+ messages).\\
 
-We can also compare the total amount of messages in a channel, and compare that to the average ratio in the entire channel. We see that the bigger the streamer, the higher the ratio. However the ratio's are very close to each other, and there are a lot of other factors (game, time of day, etc) involved to say that the bigger the channel, the more toxic it becomes. In the appendix is the full list for all streamers.
+We can also compare the total amount of messages in a channel, and compare that to the average ratio in the entire channel. We see that the bigger the streamer, the higher the ratio. However the ratios are very close to each other, and there are a lot of other factors (game, time of day, etc) involved. Which does not allow us to draw any precise conclusions from these results. However it does give an indication that the MLG chat could be more toxic as it has a higher ratio of deleted messages per user. In the appendix is the full list for all streamers.
 
 \begin{table}[]
 \centering
