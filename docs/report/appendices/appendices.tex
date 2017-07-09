@@ -101,10 +101,68 @@ a\_seagull       & 188    & 58252   & 0.0032273570006180045 \\
 \end{tabular}
 \end{table}
 
+\pagebreak
+\section{Scripts}
 
+\subsection{Gathering}
+All scripts used for gathering purposes are collected in the gathering folder.
 
+\subsubsection{TwitchVideoIDCollector}
+\label{script:twitch_video_id_collector}
+Located at gathering/TwitchVideoIDCollector.py\\
 
+\subsubsection{TwitchVideoDownloader}
+\label{script:twitch_video_downloader}
+Located at gathering/TwitchVideoDownloader.py.\\
+Requires a list of video id's collected by the TwitchVideoIDCollector.
 
+\subsubsection{Preprocessor}
+\label{script:preprocessor}
+Located at gathering/Preprocessor/preprocessor.py\\
+
+\subsubsection{Preprocessor.NET}
+\label{script:preprocessor.NET}
+Located at gathering/Preprocessor.NET\\
+
+\subsection{Analyzing}
+All scripts used for analyzing purposes are collected in the analyze folder.
+\subsubsection{Word count}
+\label{script:word_count}
+Located at $analyse/word\_count.py$\\
+
+\subsubsection{Streams per user}
+\label{script:streams_per_user}
+Located at $analyse/streams\_per\_user.py$\\
+
+\subsubsection{Deleted messages}
+\label{script:deleted_messages}
+Several scripts were used:\\
+$num\_deleted\_messages.py$ - calculates the ratio's per streamer with a list of users\\
+$num\_total\_deleted\_messages$ - calculated the average ratio of a streamer\\
+$user\_deleted\_rankings$ - sorts the users on their ratio for every video\\
+
+\subsection{Unfinished}
+All scripts created but not used in the analysis are collected in the unfinished folder.
+
+\subsubsection{Pickle2sql}
+\label{script:pickle2sql}
+Located at unfinished/pickle2sql.py\\
+This script takes a filtered rechat pickle file and creates a sql statement to insert into the message classifier database.
+
+\subsubsection{SpeechRecognition}
+\label{script:speech_recognition}
+Located at $unfinished/speech\_vod.py$\\
+This scripts was used to test the speech recognition of video files. 
+
+\subsubsection{Message Classifier}
+\label{script:message_classifier}
+Located at unfinished/MessageClassifier.
+Website to rate the messages of a stream. Output will be used to train the classifier.
+
+\subsubsection{MaxEntClassifier}
+\label{script:max_ent_classifier}
+Located at unfinished/MaxEntClassifier
+This script was used to test/train the classifier.
 
 \end{appendices}
 \end{document}
