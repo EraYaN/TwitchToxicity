@@ -8,14 +8,14 @@
 \chapter{Related Work}
 \label{ch:relatedwork}
 
-Toxic behaviour has been researched before, a paper titled "Toxicity Detection in Multiplayer Online Games" written by Marcus Martens, Siqi Shen, Alexandru Iosup and Fernando Kuipers analyses toxic behaviour in one of the ancestors of the MOBA genre: Defence of the Ancients \cite{marcustoxicity}. The paper describes detection based on patterns, lists and lettersets. Especially detecting based on lettersets is an interesting point that could be used in this project too. The twitch chat uses similar intentionally misspelled words like "looool" instead of "lol". Currently our algorithm cannot distinguish between these words while they essentially mean the same. The dota dataset was also preprocessed, removing games that ended instantly and removing other languages besides english.
+Toxic behaviour has been researched before, a paper titled "Toxicity Detection in Multiplayer Online Games" written by Marcus Martens, Siqi Shen, Alexandru Iosup and Fernando Kuipers analyses toxic behaviour in one of the ancestors of the MOBA genre: Defence of the Ancients \cite{marcustoxicity}. The paper describes detection based on patterns, lists and letter-sets. Especially detecting based on letter-sets is an interesting point that could be used in this project too. The twitch chat uses similar intentionally misspelled words like "looool" instead of "lol". Currently our algorithm cannot distinguish between these words while they essentially mean the same. The Dota dataset was also preprocessed, removing games that ended instantly and removing other languages besides English.
 
-Since the project is mostly written in Python, there are several toolkits available that will make the work significantly easier. Below is a list of tools used together with a brief description.
+Since the project is mostly written in Python, there are several tool-kits available that will make the work significantly easier. Below is a list of tools used together with a brief description.
 
 \begin{enumerate}
 	\item \textbf{Youtube-DL}, a command line program that can be used to download videos from YouTube and a few other sites including Twitch. This is the main program used to gather our data. 
 	\item \textbf{Python Twitch API}, a library used to allow python to connect to twitch. This is used to gather video-ids to use with Youtube-DL to gather all the data.
-	\item \textbf{Python NLTK}, a python natural language toolkit that is used as a classifier to detect toxicity in messages.
+	\item \textbf{Python NLTK}, a python natural language tool-kit that is used as a classifier to detect toxicity in messages.
 \end{enumerate}
 
 

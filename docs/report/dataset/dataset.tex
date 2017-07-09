@@ -25,7 +25,7 @@ Twitch users like to view different games. And therefore watch to different Stre
 \begin{minipage}{.5\textwidth}
   
 \section{Wordcount}
-An interesting way to analyze the dataset is to look at the wordcount, so counting how often words occur in the chat. Words that are expected to top the list are articles of the english language like "the". Team names of teams that participate in the tournaments are also seen very frequently. Because these words are of little value to our wordcount analysis, they are removed from the list. The first 25 words of this filtered list is shown in Table \ref{wordcounttabel}.\\
+An interesting way to analyse the dataset is to look at the wordcount, so counting how often words occur in the chat. Words that are expected to top the list are articles of the English language like "the". Team names of teams that participate in the tournaments are also seen very frequently. Because these words are of little value to our wordcount analysis, they are removed from the list. The first 25 words of this filtered list is shown in Table \ref{wordcounttabel}.\\
 The one topping the list, "vac", is used often when impressive plays happen in game to express disbelief. This conclusion is made because VAC is the name off the anti-cheat system of Valve (Valve Anti-Cheat System). It is however seen as non toxic as it is no real accusation of cheating but a mere fun way of expressing that a player is doing well.
 Other words that occur often are "na", "eu" and "usa", because in the league of legends community a rivalry between the EU (European Union) and NA (North America) is very common. These words are used as adjectives to express positive or negative thoughts about players, heroes or teams. Depending on the origin of the player that sent the message. For example if a viewer from North America says "What an EU player!", it usually means he thinks the player is not doing very well. While the "EU" adjective could be substituted for "NA" to make a positive comment about the player. Other expected occurrences are common swear words like "fuck", which is high in the list. \\
 
@@ -68,7 +68,7 @@ lmao    & 16266     \\ \hline
 
 \section{Deleted messages}
 
-Twitch also has its own filtering, which is done before messages appear in the chat. Some of the messages sent are therefore deleted by Twitch, as they view it as toxic. Deleted messages still appear in the chat log. However, the message itself is removed if the deleted flag is set to true. This way we can still analyze some of the data by just looking if the deleted flag is set to true, which is an indicator that a message might be toxic.\\
+Twitch also has its own filtering, which is done before messages appear in the chat. Some of the messages sent are therefore deleted by Twitch, as they view it as toxic. Deleted messages still appear in the chat log. However, the message itself is removed if the deleted flag is set to true. This way we can still analyse some of the data by just looking if the deleted flag is set to true, which is an indicator that a message might be toxic.\\
 Points of interest about the deleted messages are:
 \begin{itemize}
 	\item Ratio of deleted messages per user
@@ -103,7 +103,7 @@ As can be seen, there isn't a pattern visible. So it looks that the users are ra
 However, it's very likely that we have not enough data to get such results. It's possible that we don't have the same users watching, and that the toxic users only appear in one video.
 
 \subsection{Deleted messages per stream}
-Before we calculate the ratio, we want to filter the data some more. We exclude all the users in a single chatlog that have posted less than 10 messages. So only users that posted more than 10 messages are considered 'real' users, that tend to watch the stream. 
+Before we calculate the ratio, we want to filter the data some more. We exclude all the users in a single chat-log that have posted less than 10 messages. So only users that posted more than 10 messages are considered 'real' users, that tend to watch the stream. 
 We sum all ratio's of the users in a stream and calculate the average ratio. Then we plot the ratio against the amount of users with that ratio in figure \ref{fig:deletedPerStream}. The amount of users are normalized, so we can compare different sizes of streamers.
 In figure \ref{fig:deletedPerStream} we took the three largest streamers in our dataset. Note that the largest streamer (MLG) has around 35000 users that had a message deleted. The second (eleaguetv) has around 10000 users and the third (dreamhackcs) only around 700.
 
@@ -117,7 +117,7 @@ In figure \ref{fig:deletedPerStream} we took the three largest streamers in our 
 As can be seen, the MLG stream has the most amount of low ratio users, and the amount decreases as the ratio increases. However, in the dreamhackcs data we see that the lowest ratio doesn't have the highest amount of users. The line increases in the beginning and the most users with deleted message have a ratio around 10-20$\%$. After this peak all streams show a similar pattern toward a higher ratio.
 However, and the end we see a jump at a ratio of 1. These are the users that got all of their messages deleted (10+ messages).\\
 
-We can also compare the total amount of messages in a channel, and compare that to the average ratio in the entire channel. We see that the bigger the streamer, the higher the ratio. However the ratio's are very close to eachother, and there are a lot of other factors (game, time of day, etc) involved to say that the bigger the channel, the more toxic it becomes. In the appendix is the full list for all streamers.
+We can also compare the total amount of messages in a channel, and compare that to the average ratio in the entire channel. We see that the bigger the streamer, the higher the ratio. However the ratio's are very close to each other, and there are a lot of other factors (game, time of day, etc) involved to say that the bigger the channel, the more toxic it becomes. In the appendix is the full list for all streamers.
 
 \begin{table}[]
 \centering

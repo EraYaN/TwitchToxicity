@@ -22,11 +22,11 @@ This chapter contains work that is uncompleted that was intended to be part of t
 \section{SpeechRecognition}
 Originally we wanted to analyse the interaction between the streamer and the users, so we needed data from the streamer.
 The downloaded audio was used with the python library SpeechRecognition. %https://pypi.python.org/pypi/SpeechRecognition/%.
-Different speech recognition toolkits were looked into:
+Different speech recognition tool-kits were looked into:
 \begin{enumerate}
 \item Python speech recognition 3.7.1 which includes CMU Sphinx as speech recognition software. It is very slow as the processing must happen in real-time.
 \item Dragon Speech Recognition Software, which is a professional software package. However it has high price which makes it not viable for our project.
-\item Google Cloud Speech API, google has a free tool that can be used for speech recognition. It is however very slow like all other tools and does not return usable text.
+\item Google Cloud Speech API, Google has a free tool that can be used for speech recognition. It is however very slow like all other tools and does not return usable text.
 \end{enumerate}
 
 All the tools used work in real-time, so this means they are all very slow (each second of audio takes 1 second to process). Likewise none of them returned usable data that doesn't contain a significant amount of errors.
@@ -58,7 +58,7 @@ There are way too many messages rated 1 (non-toxic). Thus the output of the clas
 \begin{enumerate}
 	\item \textbf{VADER Sentiment Analysis}, Valence Aware Dictionary and sEntiment Reasoner. This is a lexicon and rule-based sentiment analysis tool that is specifically attuned to sentiments expressed in social media, and works well on texts from other domains \cite{vader}.
 	\item \textbf{Naive Bayes}, a text classifier based on Naive Bayes. Which are methods of supervised learning algorithms based on applying Bayes' theorem with the "naive" assumption of independence between every pair of features \cite{naivebayes}.
-	\item \textbf{MaxEnt}, Maximum Entropy Classifiers. This is a classifier model that is based on the maximum entropy modeling framework. This framework considers all of the probability distributions that are empirically consistent with the training data; and chooses the distribution with the highest entropy \cite{maxent}.
+	\item \textbf{MaxEnt}, Maximum Entropy Classifiers. This is a classifier model that is based on the maximum entropy modelling framework. This framework considers all of the probability distributions that are empirically consistent with the training data; and chooses the distribution with the highest entropy \cite{maxent}.
 \end{enumerate}
 
 The idea was that the results would give an average degree of toxicity for certain streamers to compare, but also users individually per channel viewed. Based on those results different viewers could also be compared in different channels to see how the toxicity in a channel affects the viewers. So in other words if the toxicity in twitch streams is also contagious.
