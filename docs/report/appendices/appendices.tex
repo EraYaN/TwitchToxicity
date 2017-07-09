@@ -16,17 +16,54 @@
 % }
 % \makeatother
 
-\chapter{First Appendix}\label{app:first-appendix}
+\chapter{}\label{app:first-appendix}
 
-\section{TwitchVideoIDCollector}
+%Json rechat structure
+\section{Rechat json structure}
+\label{json_structure}
+\begin{verbatim}
+{
+	"id": "chat-11-2017:AVrcyDpRlmpBKkvqiPUA",
+	"attributes": {
+		"command": "",
+		"room": "amazhs",
+		"color": null,
+		"from": "junrong777",
+		"video-offset": 440888,
+		"deleted": false,
+		"tags": {
+			"user-type": null,
+			"subscriber": false,
+			"badges": null,
+			"room-id": "43356746",
+			"color": null,
+			"id": "a71ac1ac-d497-4b28-95ed-8e85b202cae6",
+			"turbo": false,
+			"emotes": null,
+			"user-id": "133601858",
+			"display-name": "junrong777",
+			"mod": false,
+			"tmi-sent-ts": "1489762792350"
+		},
+		"timestamp": 1489762777888,
+		"message": "HE DID"
+	},
+	"type": "rechat-message",
+	"links": {
+		"self": "/rechat-message/chat-11-2017:AVrcyDpRlmpBKkvqiPUA"
+	}
+}
+\end{verbatim}
 
-\section{Ratio of deleted messages per stream}
-\begin{table}[]
+
+\section{Ratio of deleted messages per streamer}
+\begin{table}[h]
 \centering
-\caption{My caption}
-\label{my-label}
+\caption{Ratio of deleted messages per streamer}
+\label{ratio_table}
+\renewcommand{\arraystretch}{0.9}% Tighter
 \begin{tabular}{llll}
-tsm\_doublelift  & 0      & 71      & 0.0                   \\
+Streamer 		 & Deleted messages & Total messages & Ratio \\
 m0e\_tv          & 5      & 361     & 0.013850415512465374  \\
 tsm\_theoddone   & 824    & 186551  & 0.004417022690845935  \\
 nightblue3       & 1790   & 72540   & 0.024676040805073064  \\
@@ -61,10 +98,13 @@ drdisrespectlive & 195    & 12384   & 0.015746124031007752  \\
 loltyler1        & 174    & 5040    & 0.034523809523809526  \\
 boxbox           & 27     & 2093    & 0.012900143334925944  \\
 a\_seagull       & 188    & 58252   & 0.0032273570006180045 \\
-voyboy           & 0      & 119     & 0.0                   \\
-TSM\_TheOddOne   & 0      & 1       & 0.0                  
 \end{tabular}
 \end{table}
+
+
+
+
+
 
 \end{appendices}
 \end{document}

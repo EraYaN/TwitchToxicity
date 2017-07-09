@@ -29,36 +29,42 @@ The flowchart of all these processes together is seen in Figure \ref{fig:flowcha
 
 \section{Video Downloader}
 First of all, all the video's that are uploaded by the 100 most popular streamers are collected. This is stored in a file which holds the streamer, together with the id's of each video.
-This is done using the TwitchVideoIDCollector script. The most popular streamers are hardcoded, but can be extended easily in case the current dataset is not large enough for our goals.
+This is done using the TwitchVideoIDCollector script. The most popular streamers are hard-coded, but can be extended easily in case the current dataset is not large enough for our goals.
+
+One problem is that the Twitch API doesn't return all videos that can be seen on the website, so this limits the returned data-size.
 
 After all the video id's are collected, the script TwitchVideoDownloader uses this list to fetch all the video's.
 Some filtering is already at place here. The rechat functionality was implemented by Twitch at 2016-02-23, so all that are published before this date is useless since we are mainly interested in the chat.
-The downloader also downloaded the video which only contains audio. Later we decided to leave the video/audio, since speech recognition is still too hard.
+The downloader also downloaded the video which only contains audio. At a later point we decided to leave the video/audio, since it will take too much time to analyse and extract the sentences.
 
-The TwitchVideoDownloader return the following files:
+The TwitchVideoDownloader returns the following files:
 \begin{itemize}
 \item A thumbnail
 \item A json file with metadata of the video, which contains info like audio codec, frame rate and upload date.
-\item A json file with apiinfo
+\item A json file with API info
 \item A json file with the chat
 \item A mp4 with the video, which only contains audio.
 \end{itemize}
 
+The chat data is a large array with all the messages, an example of such a message can be found in appendix \ref{json_structure}.
+
 A small script is used to convert all the json data to pickle format to use with python in the preprocessor script as pickle files are processed faster in python. Later it would become clear this would be obsolete as python is too slow to pre process all the data. This is described in the next section.
+
+\clearpage
 
 \section{Preprocessor}
 Before we could train our classifier we must filter the chat.
-The chat is filled with emotes and ascii art which is not supported by our trainer/classifier.
+The chat is filled with emotes and ASCII art which is not supported by the trainer/classifier.
 At first we started off with a python script which removed each word in TwitchEmotes.txt.
-All detected unicode characters are removed in the same way.
+All detected Unicode characters are removed in the same way.
 The TwitchEmotes.txt file was relatively small in the beginning, so the python script could handle all the chat files fast enough.
-However, later we detected there are a lot more emotes, but also custom subscriber emotes by the streamers.
+However, in a later stage we detected there are a lot more emotes, but also custom subscriber emotes by the streamers.
 This expanded our text file massively to around 104k words. 
 At this point, the python script needed way to much time to filter all chat files with the new emotes list.
 
 So we switched to $C\#$ to implement our preprocessor as this language is significantly more efficient compared to python for loops and string replacement.
 This script was able to filter the chat data within 10 minutes, a major improved compared to the python script.
-It was further optimized by tokenizing the string and using a key lookup in a hashset of the words to be filtered.
+It was further optimized by tokenizing the string and using a key lookup in a hash-set of the words to be filtered.
 This processes about 200 thousand to 600 thousand messages per second on one core.
 This in comparison to about 1500 to 6000 messages per second on 16 cores by using the python implementation.
 Now the filtered data is ready to be used to train the classifier in detecting toxicity.
