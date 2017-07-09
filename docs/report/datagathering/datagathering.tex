@@ -50,6 +50,8 @@ The chat data is a large array with all the messages, an example of such a messa
 
 A small script is used to convert all the json data to pickle format to use with python in the preprocessor script as pickle files are processed faster in python. Later it would become clear this would be obsolete as python is too slow to pre process all the data. This is described in the next section.
 
+\clearpage
+
 \section{Preprocessor}
 Before we could train our classifier we must filter the chat.
 The chat is filled with emotes and ASCII art which is not supported by the trainer/classifier.
