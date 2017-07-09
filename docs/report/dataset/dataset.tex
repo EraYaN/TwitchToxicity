@@ -25,11 +25,10 @@ Twitch users like to view different games. And therefore watch to different Stre
 \begin{minipage}{.5\textwidth}
   
 \section{Wordcount}
-One of the things we can get from our dataset is the number of times a certain word is used.
-Certain words are expected to occur a lot. These are words used in the english language a lot. A lot of articles, like "the", are seen. Also team names are found on top of this list. To be able to analyze these results better, team names, articles and a few other words are left out. The first 25 words of this filtered list is shown in Table \ref{wordcounttabel}.\\
-The one on top, "vac", is said the most. It most likely is said when a user thinks someone is cheating. This conclusion is made because VAC is the name off the anti-cheat system of Valve (Valve Anti-Cheat System). Valve is the creator of Steam, a platform for games. The word "VAC" can be seen as toxic, because it is an accusation towards the streamer, or the other players in the game."VAC" is said a lot when a player in the game does something that is almost impossible, so it could also be jealousy from the user.\\
-In the dataset we see that Twitch users like to say where they are from. That's why we see "na", "eu" and "usa" high in this list. "na" most likely stands for North America and "eu" is the European Union. The words are not toxic by themselves, but there could start a discussion by the users about what continent or country is better and with that toxic comments are possible.\\
-"fuck" is high in this list, as expected. But luckaly the words "good" and "nice" occur more. Unfortunately "good" and "nice" could also be used in a toxic way. When they are used in a sarcastic way, the sentence will be toxic. 
+An interesting way to analyze the dataset is to look at the wordcount, so counting how often words occur in the chat. Words that are expected to top the list are articles of the english language like "the". Team names of teams that participate in the tournaments are also seen very frequently. Because these words are of little value to our wordcount analysis, they are removed from the list. The first 25 words of this filtered list is shown in Table \ref{wordcounttabel}.\\
+The one topping the list, "vac", is used often when impressive plays happen in game to express disbelief. This conclusion is made because VAC is the name off the anti-cheat system of Valve (Valve Anti-Cheat System). It is however seen as non toxic as it is no real accusation of cheating but a mere fun way of expressing that a player is doing well.
+Other words that occur often are "na", "eu" and "usa", because in the league of legends community a rivalry between the EU (European Union) and NA (North America) is very common. These words are used as adjectives to express positive or negative thoughts about players, heroes or teams. Depending on the origin of the player that sent the message. For example if a viewer from North America says "What an EU player!", it usually means he thinks the player is not doing very well. While the "EU" adjective could be substituted for "NA" to make a positive comment about the player. Other expected occurrences are common swear words like "fuck", which is high in the list. \\
+
 
 \end{minipage}% This must go next to `\end{minipage}`
 \begin{minipage}{.5\textwidth}
@@ -69,8 +68,8 @@ lmao    & 16266     \\ \hline
 
 \section{Deleted messages}
 
-Twitch also has it's own filtering, before it appears in the chats. Some of the messages send are therefore deleted by Twitch. The messages that are deleted are however avaiable in the rechat log. However, the message itself is removed by the deleted flag is set to true. This way we can still analyse some of the data.\\
-There are some interesting facts to detect about the deleted messages:
+Twitch also has its own filtering, which is done before messages appear in the chat. Some of the messages sent are therefore deleted by Twitch, as they view it as toxic. Deleted messages still appear in the chat log. However, the message itself is removed if the deleted flag is set to true. This way we can still analyze some of the data by just looking if the deleted flag is set to true, which is an indicator that a message might be toxic.\\
+Points of interest about the deleted messages are:
 \begin{itemize}
 	\item Ratio of deleted messages per user
 	\item Ratio of deleted messages per stream
