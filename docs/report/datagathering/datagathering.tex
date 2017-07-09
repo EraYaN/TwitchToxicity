@@ -13,7 +13,7 @@ To acquire the data necessary twitch replay videos where downloaded from twitch 
 A script was built to do this automatically for the most popular streamers for various games. 
 It can download multiple replays in parallel which speeds up the process because twitch throttles the downloads.
 Only the chat replay is kept as audio and video analysis is out of scope of this project.
-YouTube-DL saves the files in json format,  The chat replays are converted to pickle files to use with python. 
+YouTube-DL saves the files in json format, the chat replays are converted to pickle files to use with python. 
 This results in about 1.5GB of pickle files, so the data was compressed to save about 750MB of space.
 The first step is to filter all the stored chats with a preprocessor to filter the twitch emotes and remove unusual characters to prepare the data for training and classification.
 When analysing the data the classifier first needs to be trained to properly cast a verdict if a certain sentence is toxic or not.
