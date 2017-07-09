@@ -16,14 +16,54 @@
 % }
 % \makeatother
 
-\chapter{First Appendix}\label{app:first-appendix}
+\chapter{}\label{app:first-appendix}
+
+%Json rechat structure
+\subsection{Rechat json structure}
+\label{json_structure}
+\begin{verbatim}
+{
+	"id": "chat-11-2017:AVrcyDpRlmpBKkvqiPUA",
+	"attributes": {
+		"command": "",
+		"room": "amazhs",
+		"color": null,
+		"from": "junrong777",
+		"video-offset": 440888,
+		"deleted": false,
+		"tags": {
+			"user-type": null,
+			"subscriber": false,
+			"badges": null,
+			"room-id": "43356746",
+			"color": null,
+			"id": "a71ac1ac-d497-4b28-95ed-8e85b202cae6",
+			"turbo": false,
+			"emotes": null,
+			"user-id": "133601858",
+			"display-name": "junrong777",
+			"mod": false,
+			"tmi-sent-ts": "1489762792350"
+		},
+		"timestamp": 1489762777888,
+		"message": "HE DID"
+	},
+	"type": "rechat-message",
+	"links": {
+		"self": "/rechat-message/chat-11-2017:AVrcyDpRlmpBKkvqiPUA"
+	}
+}
+\end{verbatim}
+
 
 \subsection{Ratio of deleted messages per streamer}
-\begin{table}[]
+\begin{table}[h]
 \centering
 \caption{Ratio of deleted messages per streamer}
-\label{my-label}
+\label{ratio_table}
+\renewcommand{\arraystretch}{0.9}% Tighter
 \begin{tabular}{llll}
+Streamer 		 & Deleted messages & Total messages & Ratio \\
 m0e\_tv          & 5      & 361     & 0.013850415512465374  \\
 tsm\_theoddone   & 824    & 186551  & 0.004417022690845935  \\
 nightblue3       & 1790   & 72540   & 0.024676040805073064  \\
@@ -62,41 +102,7 @@ a\_seagull       & 188    & 58252   & 0.0032273570006180045 \\
 \end{table}
 
 
-%Json rechat structure
-\subsection{Rechat json structure}
-\begin{verbatim}
-{
-	"id": "chat-11-2017:AVrcyDpRlmpBKkvqiPUA",
-	"attributes": {
-		"command": "",
-		"room": "amazhs",
-		"color": null,
-		"from": "junrong777",
-		"video-offset": 440888,
-		"deleted": false,
-		"tags": {
-			"user-type": null,
-			"subscriber": false,
-			"badges": null,
-			"room-id": "43356746",
-			"color": null,
-			"id": "a71ac1ac-d497-4b28-95ed-8e85b202cae6",
-			"turbo": false,
-			"emotes": null,
-			"user-id": "133601858",
-			"display-name": "junrong777",
-			"mod": false,
-			"tmi-sent-ts": "1489762792350"
-		},
-		"timestamp": 1489762777888,
-		"message": "HE DID"
-	},
-	"type": "rechat-message",
-	"links": {
-		"self": "/rechat-message/chat-11-2017:AVrcyDpRlmpBKkvqiPUA"
-	}
-}
-\end{verbatim}
+
 
 
 
