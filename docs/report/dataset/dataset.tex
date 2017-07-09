@@ -12,8 +12,7 @@
 This section describes how the data that was gathered in the previous steps will be analysed using the proper tools. The main goal is to see whether certain toxic users are only toxic when they are viewing a certain streamer or in every channel they visit. So whether viewers match their toxicity level to the channel. Another interesting question is to see if certain channels are more toxic than others and how this affects the toxicity levels of the users. 
 
 \section{Streamers per User}
-Twitch users like to view different games. And therefore watch to different Streamers. In this dataset there are a lot of users that only watch streams of one streamer. But there are also a lot that wath streams of other streamers. In Figure \ref{fig:streamPerUser} the streamers per users are plot on a logaritmic scale. In the original dataset there were users that watched to even more streamers, but those were bots. The user on top of this list was present in all chat rooms, because this was a bot from twitch itself, to place notifications in the chat.\\
-If we had more data aboutthe toxicity of users we could see if users that are toxic in one chat are only toxic by that streamer, or by multiple. 
+Twitch users like to view different games. And therefore watch to different Streamers. In this dataset there is a large amount of users that only watch a single streamer, but a fraction watches multiple streamers on a regular basis. In Figure \ref{fig:streamPerUser} the streamers per users are plotted on a logarithmic scale. Since most streamers use bots to moderate the channel and send messages to their users, they are present in almost all streams. Common bot names like "Xanbot" and "Moobot" are removed from the list as they are not real users. \\
 
 \begin{figure}[h]
 	\centering

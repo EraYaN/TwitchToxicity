@@ -8,7 +8,11 @@
 \chapter{Conclusion}
 \label{ch:conclusion}
 
-Developing a system to detect toxicity in Twitch streaming communities was harder than expected. The project didn't reach much further than creating a tool that can gather a large dataset from twitch using YouTube-DL and the Twitch API. Unfortunately the Twitch API did not always return all the data that was requested. Nonetheless this resulted in a dataset of over 1.5 GB of messages sent in streams of various games. This dataset was analyzed for wordcount, toxicity by looking at deleted messages and the number of streamers a user watches. (conclusion of analysis)
+Developing a system to detect toxicity in Twitch streaming communities was harder than expected. The project didn't reach much further than creating a tool that can gather a large dataset from twitch using YouTube-DL and the Twitch API. Unfortunately the Twitch API did not always return all the data that was requested. Nonetheless this resulted in a dataset of over 1.5 GB of messages sent in streams of various games. This dataset was analyzed for wordcount, toxicity by looking at deleted messages and the number of streamers a user watches.
+
+The wordcount showed "vac" (Valve Anti Cheat System) as the most common word which is used to express disbelief if a player does something that that requires great skill but is not cheating. The runner up is the well known "lol" which is used to express laughter. Other popular slang terms like "ez", "rekt", "lmao" and "rip" also occur high in the list.
+
+Using the deleted messages analysis an attempt was made to see if the ratio of deleted messages per user is influenced by other users or the streamer. A single streamer was picked and different videos were compared to see if certain users are always on top of the list of deleted message ratios. However no apparent pattern was discovered using this method. When looking at the total ratio of deleted messages for an entire stream by mlg, eleaguetv and dreamhackcs, it was found that in the mlg stream the ratio is higher compared to eleaguetv and dreamhackcs. Which is an indication that the toxicity level in this mlg stream is higher.
 
 Furthermore a start was made with training a classifier with a part of the current dataset. A web page was created to allow users to rate messages for toxic content from which the result is stored in a SQL database. This database was briefly used with the MaxEnt classifier which gave unrealistic results.
 
